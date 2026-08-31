@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ kind_config.title }} — RecipeHub{% endblock %}
+
+{% block content %}
+<nav class="subnav">
+    <a href="{% url 'category_list' 'products' %}" class="{% if kind == 'products' %}active{% endif %}">Product categories</a>
+    <a href="{% url 'category_list' 'recipes' %}" class="{% if kind == 'recipes' %}active{% endif %}">Recipe categories</a>
+</nav>
+
+<div class="page-head">
+    <h1>{{ kind_config.title }}</h1>
+    <a class="button" href="{% url 'category_create' kind %}">+ Add Category</a>
+</div>
+
+{% if categories %}
+    <div class="table-wrap">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr {% if not category.active %}class="is-suspended"{% endif %}>
+                        <td>
+                            <strong>{{ category.name }}</strong>
+                            {% if category.description %}
+                                <div class="meta">{{ category.description }}</div>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if category.active %}
+                                <span class="status status-active">Active</span>
+                            {% else %}
+                                <span class="status status-suspended">Suspended</span>
+                            {% endif %}
+                        </td>
+                        <td class="actions">
+                            <a class="button button-ghost" href="{% url 'category_edit' kind category.name_id %}">Edit</a>
+                            <form method="post" action="{% url 'category_set_active' kind category.name_id %}">
+                                {% csrf_token %}
+                                {% if category.active %}
+                                    <input type="hidden" name="active" value="0">
+                                    <button type="submit" class="button button-quiet">Suspend</button>
+                                {% else %}
+                                    <input type="hidden" name="active" value="1">
+                                    <button type="submit" class="button">Reactivate</button>
+                                {% endif %}
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>No categories yet.</p>
+{% endif %}
+{% endblock %}

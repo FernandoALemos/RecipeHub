@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Products — RecipeHub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>Products</h1>
+    <a class="button" href="{% url 'product_create' %}">+ Add Product</a>
+</div>
+
+{% if products %}
+    <div class="table-wrap">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Default unit</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr {% if not product.active %}class="is-suspended"{% endif %}>
+                        <td><strong>{{ product.name }}</strong></td>
+                        <td>{{ product.category_name }}</td>
+                        <td>{{ product.default_unit }}</td>
+                        <td>
+                            {% if product.active %}
+                                <span class="status status-active">Active</span>
+                            {% else %}
+                                <span class="status status-suspended">Suspended</span>
+                            {% endif %}
+                        </td>
+                        <td class="actions">
+                            <a class="button button-ghost" href="{% url 'product_edit' product.name_id %}">Edit</a>
+                            <form method="post" action="{% url 'product_set_active' product.name_id %}">
+                                {% csrf_token %}
+                                {% if product.active %}
+                                    <input type="hidden" name="active" value="0">
+                                    <button type="submit" class="button button-quiet">Suspend</button>
+                                {% else %}
+                                    <input type="hidden" name="active" value="1">
+                                    <button type="submit" class="button">Reactivate</button>
+                                {% endif %}
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>No products yet.</p>
+{% endif %}
+{% endblock %}

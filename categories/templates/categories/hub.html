@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Categories — RecipeHub{% endblock %}
+
+{% block content %}
+<h1>Categories</h1>
+<p class="lede">Product categories classify ingredients. Recipe categories classify dishes. A recipe will be able to belong to more than one recipe category.</p>
+
+<nav class="home-grid">
+    <a class="home-card" href="{% url 'category_list' 'products' %}">
+        Product categories
+        <small>Dairy, Eggs, Vegetables, Flours &amp; Starches…</small>
+    </a>
+    <a class="home-card" href="{% url 'category_list' 'recipes' %}">
+        Recipe categories
+        <small>Appetizers, Main Courses, Desserts, Pasta…</small>
+    </a>
+</nav>
+{% endblock %}

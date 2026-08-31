@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}{{ heading }} — RecipeHub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{{ heading }}</h1>
+    <a href="{% url 'product_list' %}">Back to list</a>
+</div>
+
+{% if errors %}
+    <ul class="errors">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="post" class="form">
+    {% csrf_token %}
+    <label>
+        Name
+        <input type="text" name="name" value="{{ form.name }}" required>
+    </label>
+    {% if is_edit %}
+        <p class="hint">Current name_id: <code>{{ name_id }}</code>. It updates automatically if you change the name.</p>
+    {% endif %}
+    <label>
+        Description
+        <textarea name="description" rows="3">{{ form.description }}</textarea>
+    </label>
+    <label>
+        Category
+        <select name="category_id" required>
+            <option value="">Select a category</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if form.category_id == category.id %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>
+        Aliases <span class="hint">(comma-separated)</span>
+        <input type="text" name="aliases" value="{{ form.aliases }}" placeholder="milk, leche">
+    </label>
+
+    <fieldset>
+        <legend>Measurement types</legend>
+        <div class="checks">
+            {% for code, label in measurement_types %}
+                <label class="check">
+                    <input type="checkbox" name="measurement_types" value="{{ code }}" {% if code in form.measurement_types %}checked{% endif %}>
+                    <span>{{ label }}</span>
+                </label>
+            {% endfor %}
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Allowed units</legend>
+        <div class="checks">
+            {% for code, label in units %}
+                <label class="check">
+                    <input type="checkbox" name="allowed_units" value="{{ code }}" {% if code in form.allowed_units %}checked{% endif %}>
+                    <span>{{ code }}</span>
+                </label>
+            {% endfor %}
+        </div>
+    </fieldset>
+
+    <label>
+        Default unit
+        <select name="default_unit" required>
+            <option value="">Select a unit</option>
+            {% for code, label in units %}
+                <option value="{{ code }}" {% if form.default_unit == code %}selected{% endif %}>{{ code }}</option>
+            {% endfor %}
+        </select>
+    </label>
+
+    {% if is_edit %}
+        <label class="check">
+            <input type="checkbox" name="active" {% if form.active %}checked{% endif %}>
+            <span>Active</span>
+        </label>
+    {% endif %}
+
+    <button type="submit">{{ submit_label }}</button>
+</form>
+{% endblock %}

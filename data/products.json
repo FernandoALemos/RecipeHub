@@ -1,0 +1,561 @@
+[
+    {
+        "name": "Apple",
+        "name_id": "apple",
+        "description": "Fresh apple",
+        "aliases": [],
+        "category_name_id": "fruits",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Apple Cider Vinegar",
+        "name_id": "apple_cider_vinegar",
+        "description": "Apple cider vinegar",
+        "aliases": [],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "tsp",
+            "tbsp",
+            "cup"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Black Pepper",
+        "name_id": "black_pepper",
+        "description": "Ground or whole black pepper",
+        "aliases": [
+            "pepper"
+        ],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Butter",
+        "name_id": "butter",
+        "description": "Dairy butter",
+        "aliases": [],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Carrot",
+        "name_id": "carrot",
+        "description": "Fresh carrot",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Cornstarch",
+        "name_id": "cornstarch",
+        "description": "Corn starch",
+        "aliases": [
+            "corn starch"
+        ],
+        "category_name_id": "flours_starches",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Egg",
+        "name_id": "egg",
+        "description": "Chicken egg",
+        "aliases": [
+            "chicken egg"
+        ],
+        "category_name_id": "eggs",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_dozen",
+            "dozen",
+            "yolk",
+            "white",
+            "g"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Garlic",
+        "name_id": "garlic",
+        "description": "Fresh garlic",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "clove",
+            "unit",
+            "g"
+        ],
+        "default_unit": "clove",
+        "active": true
+    },
+    {
+        "name": "Greek Yogurt",
+        "name_id": "greek_yogurt",
+        "description": "Thick Greek-style yogurt",
+        "aliases": [
+            "greek yoghurt"
+        ],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Honey",
+        "name_id": "honey",
+        "description": "Natural honey",
+        "aliases": [],
+        "category_name_id": "sweeteners",
+        "measurement_types": [
+            "mass",
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "ml",
+            "tbsp",
+            "tsp",
+            "cup"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Lemon",
+        "name_id": "lemon",
+        "description": "Fresh lemon",
+        "aliases": [],
+        "category_name_id": "fruits",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Lentils",
+        "name_id": "lentils",
+        "description": "Dry lentils",
+        "aliases": [],
+        "category_name_id": "legumes",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Natural Yogurt",
+        "name_id": "natural_yogurt",
+        "description": "Plain unsweetened yogurt",
+        "aliases": [
+            "plain yogurt",
+            "yogurt"
+        ],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass",
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "ml",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Oats",
+        "name_id": "oats",
+        "description": "Rolled oats",
+        "aliases": [],
+        "category_name_id": "grains_cereals",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Olive Oil",
+        "name_id": "olive_oil",
+        "description": "Olive oil for cooking and seasoning",
+        "aliases": [],
+        "category_name_id": "oils_fats",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "l",
+            "tsp",
+            "tbsp",
+            "cup"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Onion",
+        "name_id": "onion",
+        "description": "Fresh onion",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Parsley",
+        "name_id": "parsley",
+        "description": "Fresh parsley",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "handful",
+            "tbsp",
+            "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Potato",
+        "name_id": "potato",
+        "description": "Fresh potato",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Rice",
+        "name_id": "rice",
+        "description": "Uncooked rice",
+        "aliases": [],
+        "category_name_id": "grains_cereals",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Salt",
+        "name_id": "salt",
+        "description": "Cooking salt",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Sugar",
+        "name_id": "sugar",
+        "description": "White granulated sugar",
+        "aliases": [],
+        "category_name_id": "sweeteners",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup",
+            "tbsp",
+            "tsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Sunflower Oil",
+        "name_id": "sunflower_oil",
+        "description": "Sunflower cooking oil",
+        "aliases": [],
+        "category_name_id": "oils_fats",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "l",
+            "tsp",
+            "tbsp",
+            "cup"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Tomato",
+        "name_id": "tomato",
+        "description": "Fresh tomato",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Vegetable Oil",
+        "name_id": "vegetable_oil",
+        "description": "Neutral vegetable cooking oil",
+        "aliases": [],
+        "category_name_id": "oils_fats",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "l",
+            "tsp",
+            "tbsp",
+            "cup"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Water",
+        "name_id": "water",
+        "description": "Water used for cooking",
+        "aliases": [],
+        "category_name_id": "water_cooking_liquids",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "l",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Wheat Flour 000",
+        "name_id": "wheat_flour_000",
+        "description": "Refined wheat flour",
+        "aliases": [
+            "flour"
+        ],
+        "category_name_id": "flours_starches",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Wheat Flour 0000",
+        "name_id": "wheat_flour_0000",
+        "description": "Harina de trigo 0000",
+        "aliases": [
+            "Harina"
+        ],
+        "category_name_id": "flours_starches",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "tbsp",
+            "cup"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "White Vinegar",
+        "name_id": "white_vinegar",
+        "description": "White cooking vinegar",
+        "aliases": [
+            "vinegar"
+        ],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "l",
+            "tsp",
+            "tbsp",
+            "cup"
+        ],
+        "default_unit": "ml",
+        "active": true
+    }
+]

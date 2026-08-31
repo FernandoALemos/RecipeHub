@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Condiments & Sauces",
+        "name_id": "condiments_sauces",
+        "description": "Vinegars, mustard, soy sauce and other condiments",
+        "active": true
+    },
+    {
+        "name": "Dairy",
+        "name_id": "dairy",
+        "description": "Milk, cheese, yogurt, cream and other dairy products",
+        "active": true
+    },
+    {
+        "name": "Eggs",
+        "name_id": "eggs",
+        "description": "Eggs and egg-based products",
+        "active": true
+    },
+    {
+        "name": "Fish & Seafood",
+        "name_id": "fish_seafood",
+        "description": "Fish, shellfish and other seafood",
+        "active": true
+    },
+    {
+        "name": "Flours & Starches",
+        "name_id": "flours_starches",
+        "description": "Flours, starches and similar baking products",
+        "active": true
+    },
+    {
+        "name": "Fruits",
+        "name_id": "fruits",
+        "description": "Fresh and preserved fruits",
+        "active": true
+    },
+    {
+        "name": "Grains & Cereals",
+        "name_id": "grains_cereals",
+        "description": "Rice, oats, corn, quinoa and other grains",
+        "active": true
+    },
+    {
+        "name": "Herbs & Spices",
+        "name_id": "herbs_spices",
+        "description": "Fresh herbs, dried herbs, spices and seasonings",
+        "active": true
+    },
+    {
+        "name": "Legumes",
+        "name_id": "legumes",
+        "description": "Lentils, chickpeas, beans and other legumes",
+        "active": true
+    },
+    {
+        "name": "Meat",
+        "name_id": "meat",
+        "description": "Beef, pork, lamb and other meats",
+        "active": true
+    },
+    {
+        "name": "Nuts & Seeds",
+        "name_id": "nuts_seeds",
+        "description": "Nuts, peanuts and edible seeds",
+        "active": true
+    },
+    {
+        "name": "Oils & Fats",
+        "name_id": "oils_fats",
+        "description": "Cooking oils and edible fats",
+        "active": true
+    },
+    {
+        "name": "Other",
+        "name_id": "other",
+        "description": "Products that do not belong to another category",
+        "active": true
+    },
+    {
+        "name": "Poultry",
+        "name_id": "poultry",
+        "description": "Chicken, turkey, duck and other poultry",
+        "active": true
+    },
+    {
+        "name": "Sweeteners",
+        "name_id": "sweeteners",
+        "description": "Sugar, honey and other sweeteners",
+        "active": true
+    },
+    {
+        "name": "Vegetables",
+        "name_id": "vegetables",
+        "description": "Vegetables, roots and leafy greens",
+        "active": true
+    },
+    {
+        "name": "Water & Cooking Liquids",
+        "name_id": "water_cooking_liquids",
+        "description": "Water, broths and other cooking liquids",
+        "active": true
+    }
+]

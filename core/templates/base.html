@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}RecipeHub{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}?v=9">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{% url 'home' %}">RecipeHub</a>
+        <nav>
+            <a href="{% url 'category_list' 'products' %}" class="{% if '/categories/products/' in request.path %}active{% endif %}">Product Categories</a>
+            <a href="{% url 'category_list' 'recipes' %}" class="{% if '/categories/recipes/' in request.path %}active{% endif %}">Recipe Categories</a>
+            <a href="{% url 'product_list' %}" class="{% if '/products/' in request.path %}active{% endif %}">Products</a>
+            <span class="soon">Recipes</span>
+            <span class="soon">Meal Plans</span>
+            <span class="soon">Shopping Lists</span>
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

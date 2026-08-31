@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Appetizers",
+        "name_id": "appetizers",
+        "description": "Starters such as bruschetta and empanaditas",
+        "active": true
+    },
+    {
+        "name": "Beverages",
+        "name_id": "beverages",
+        "description": "Prepared drinks such as smoothies",
+        "active": true
+    },
+    {
+        "name": "Breads",
+        "name_id": "breads",
+        "description": "Breads such as loaf bread and focaccia",
+        "active": true
+    },
+    {
+        "name": "Desserts",
+        "name_id": "desserts",
+        "description": "Sweet dishes and desserts",
+        "active": true
+    },
+    {
+        "name": "Doughs",
+        "name_id": "doughs",
+        "description": "Doughs such as pizza dough, puff pastry and tart dough",
+        "active": true
+    },
+    {
+        "name": "Fish & Seafood Dishes",
+        "name_id": "fish_seafood_dishes",
+        "description": "Fish and seafood dishes",
+        "active": true
+    },
+    {
+        "name": "Main Courses",
+        "name_id": "main_courses",
+        "description": "Main dishes",
+        "active": true
+    },
+    {
+        "name": "Meat Dishes",
+        "name_id": "meat_dishes",
+        "description": "Roasted, grilled and other meat dishes",
+        "active": true
+    },
+    {
+        "name": "Other",
+        "name_id": "other",
+        "description": "Recipes that do not belong to another category",
+        "active": true
+    },
+    {
+        "name": "Pasta",
+        "name_id": "pasta",
+        "description": "Pasta dishes such as ravioli, spaghetti and lasagna",
+        "active": true
+    },
+    {
+        "name": "Poultry Dishes",
+        "name_id": "poultry_dishes",
+        "description": "Chicken, turkey and other poultry dishes",
+        "active": true
+    },
+    {
+        "name": "Rice Dishes",
+        "name_id": "rice_dishes",
+        "description": "Rice dishes such as risotto and prepared rice",
+        "active": true
+    },
+    {
+        "name": "Salads",
+        "name_id": "salads",
+        "description": "Salads",
+        "active": true
+    },
+    {
+        "name": "Sauces & Dressings",
+        "name_id": "sauces_dressings",
+        "description": "Sauces, pesto and dressings",
+        "active": true
+    },
+    {
+        "name": "Side Dishes",
+        "name_id": "side_dishes",
+        "description": "Accompaniments served with a main course",
+        "active": true
+    },
+    {
+        "name": "Snacks",
+        "name_id": "snacks",
+        "description": "Small preparations and snacks",
+        "active": true
+    },
+    {
+        "name": "Soups & Stews",
+        "name_id": "soups_stews",
+        "description": "Soups, stews and similar dishes",
+        "active": true
+    }
+]
