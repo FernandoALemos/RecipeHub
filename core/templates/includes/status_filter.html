@@ -1,0 +1,5 @@
+<nav class="status-filter" aria-label="Status filter">
+    <a href="?status=all" class="{% if status == 'all' %}active{% endif %}">All</a>
+    <a href="?status=active" class="{% if status == 'active' %}active{% endif %}">Active</a>
+    <a href="?status=inactive" class="{% if status == 'inactive' %}active{% endif %}">Inactive</a>
+</nav>

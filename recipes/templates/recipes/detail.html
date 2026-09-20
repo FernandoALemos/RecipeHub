@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recipe.name }} — RecipeHub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{{ recipe.name }}</h1>
+    <div class="actions">
+        <a class="button button-ghost" href="{% url 'recipe_edit' recipe.name_id %}">Edit</a>
+        <a href="{% url 'recipe_list' %}">Back to list</a>
+    </div>
+</div>
+
+<section class="recipe-section">
+    <h2>General</h2>
+    <dl class="detail-dl">
+        <dt>Name</dt>
+        <dd>{{ recipe.name }}</dd>
+        <dt>Recipe Category</dt>
+        <dd>{{ recipe.category_names }}</dd>
+        <dt>Description</dt>
+        <dd>{% if recipe.description %}{{ recipe.description }}{% else %}—{% endif %}</dd>
+        <dt>Preparation time</dt>
+        <dd>{{ recipe.prep_time_label }}</dd>
+        <dt>Cooking time</dt>
+        <dd>{{ recipe.cook_time_label }}</dd>
+        <dt>Servings</dt>
+        <dd>{{ recipe.servings }}</dd>
+        <dt>Difficulty</dt>
+        <dd>{{ recipe.difficulty_label }}</dd>
+        <dt>Status</dt>
+        <dd>
+            {% if recipe.active %}
+                <span class="badge badge-active">Active</span>
+            {% else %}
+                <span class="badge badge-inactive">Inactive</span>
+            {% endif %}
+        </dd>
+        {% if recipe.tag_labels %}
+            <dt>Tags</dt>
+            <dd>{{ recipe.tag_labels|join:", " }}</dd>
+        {% endif %}
+    </dl>
+</section>
+
+<section class="recipe-section">
+    <h2>Ingredients</h2>
+    {% if recipe.ingredient_rows %}
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Preparation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in recipe.ingredient_rows %}
+                        <tr>
+                            <td>{{ item.product_name }}</td>
+                            <td>{% if item.quantity is not None %}{{ item.quantity }}{% else %}—{% endif %}</td>
+                            <td>{{ item.unit }}</td>
+                            <td>{% if item.preparation %}{{ item.preparation }}{% else %}—{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>No ingredients.</p>
+    {% endif %}
+</section>
+
+<section class="recipe-section">
+    <h2>Preparation</h2>
+    {% if recipe.step_rows %}
+        <ol class="step-list">
+            {% for step in recipe.step_rows %}
+                <li value="{{ step.step_number }}">{{ step.description }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p>No steps.</p>
+    {% endif %}
+</section>
+{% endblock %}

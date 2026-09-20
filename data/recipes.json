@@ -1,0 +1,109 @@
+[
+    {
+        "name": "Pizza Muzzarella",
+        "name_id": "pizza_muzzarella",
+        "description": "Classic pizza with tomato sauce, mozzarella cheese, oregano and green olives.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "pizzas"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "wheat_flour_000",
+                "quantity": 300,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "water",
+                "quantity": 180,
+                "unit": "ml",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "fresh_yeast",
+                "quantity": 10,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 6,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 1,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "tomato_sauce",
+                "quantity": 150,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "muzzarella",
+                "quantity": 250,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "oregano",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "olives",
+                "quantity": 8,
+                "unit": "unit",
+                "preparation": ""
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Activate the yeast\r\n\r\nIn a bowl, dissolve the fresh yeast in the lukewarm water and let it rest for 5 minutes."
+            },
+            {
+                "step_number": 2,
+                "description": "Prepare the dough\r\n\r\nAdd the flour, salt and olive oil. Mix until a dough forms and knead for about 10 minutes until smooth and elastic."
+            },
+            {
+                "step_number": 3,
+                "description": "First rise\r\n\r\nCover the dough with a clean cloth and let it rise for approximately 1 hour, or until doubled in size."
+            },
+            {
+                "step_number": 4,
+                "description": "Shape the pizza\r\n\r\nStretch the dough into a 30–32 cm round pizza and place it on a lightly oiled baking tray or pizza stone."
+            },
+            {
+                "step_number": 5,
+                "description": "Add the tomato sauce\r\n\r\nSpread the tomato sauce evenly over the dough, leaving a small border for the crust."
+            },
+            {
+                "step_number": 6,
+                "description": "Bake\r\n\r\nBake in a preheated oven at 250°C for about 10–12 minutes, until the crust is golden and the cheese is melted."
+            },
+            {
+                "step_number": 7,
+                "description": "Finish and serve\r\n\r\nSprinkle the oregano over the pizza, add the green olives, slice and serve immediately."
+            }
+        ],
+        "prep_time_minutes": 90,
+        "cook_time_minutes": 12,
+        "difficulty": "medium",
+        "tags": [
+            "italian",
+            "pizza",
+            "oven_baked",
+            "cheese",
+            "homemade"
+        ],
+        "active": true
+    }
+]

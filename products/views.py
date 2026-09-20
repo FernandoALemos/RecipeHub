@@ -1,19 +1,25 @@
 from bson import ObjectId
 from bson.errors import InvalidId
-from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.decorators.http import require_POST
 from pymongo.errors import DuplicateKeyError
 
 from config.mongo import get_db
 from core.catalog import MEASUREMENT_TYPES, UNITS
 from core.ids import generate_name_id
+from core.notices import already_exists, created, reactivated, suspended, updated
 from core.store import (
     ensure_indexes,
+    filters_are_active,
     find_by_name_id,
     known_measurement_types,
     known_units,
+    list_filter_values,
+    list_url_with_filters,
+    matches_product_search,
+    matches_status,
 )
 
 
@@ -81,6 +87,7 @@ def _form_from_post(post):
 
 def _validate_product_form(form, db, exclude_id=None):
     errors = []
+    name_taken = False
     name_id = generate_name_id(form["name"])
 
     if not form["name"]:
@@ -108,9 +115,9 @@ def _validate_product_form(form, db, exclude_id=None):
             errors.append("Selected category was not found.")
 
     if name_id and find_by_name_id(db.products, name_id, exclude_id=exclude_id):
-        errors.append(f"A product with name_id '{name_id}' already exists.")
+        name_taken = True
 
-    return errors, name_id, category
+    return errors, name_id, category, name_taken
 
 
 def _product_form_page(form, errors, categories, is_edit=False, heading="", submit_label="", name_id=""):
@@ -127,21 +134,55 @@ def _product_form_page(form, errors, categories, is_edit=False, heading="", subm
     }
 
 
+def _list_redirect(request):
+    filters = list_filter_values(request, "category", "unit")
+    return redirect(list_url_with_filters(reverse("product_list"), filters))
+
+
 def product_list(request):
     db = get_db()
+    filters = list_filter_values(request, "category", "unit")
     categories = {item["_id"]: item for item in db.product_categories.find()}
+    category_options = [
+        {"id": item["name_id"], "name": item["name"]}
+        for item in db.product_categories.find().sort("name", 1)
+    ]
     items = []
     for product in db.products.find().sort("name", 1):
+        active = product.get("active", True)
+        if not matches_status(active, filters["status"]):
+            continue
+        if not matches_product_search(product, filters["q"]):
+            continue
         category = categories.get(product.get("category_id"))
+        if filters["category"]:
+            if category is None or category.get("name_id") != filters["category"]:
+                continue
+        if filters["unit"]:
+            allowed = product.get("allowed_units", [])
+            default_unit = product.get("default_unit")
+            if filters["unit"] != default_unit and filters["unit"] not in allowed:
+                continue
         items.append(
             {
                 **product,
                 "category_name": category["name"] if category else "—",
-                "active": product.get("active", True),
+                "active": active,
             }
         )
-    return render(request, "products/list.html", {"products": items})
-
+    return render(
+        request,
+        "products/list.html",
+        {
+            "products": items,
+            "filters": filters,
+            "filters_active": filters_are_active(filters),
+            "clear_url": reverse("product_list"),
+            "search_placeholder": "Search by name or alias",
+            "category_options": category_options,
+            "unit_options": UNITS,
+        },
+    )
 
 def product_create(request):
     db = get_db()
@@ -153,9 +194,11 @@ def product_create(request):
     if request.method == "POST":
         form = _form_from_post(request.POST)
         form["active"] = True
-        errors, name_id, category = _validate_product_form(form, db)
+        errors, name_id, category, name_taken = _validate_product_form(form, db)
+        if name_taken:
+            already_exists(request, "product")
 
-        if not errors and category is not None:
+        if not errors and not name_taken and category is not None:
             try:
                 db.products.insert_one(
                     {
@@ -171,9 +214,9 @@ def product_create(request):
                     }
                 )
             except DuplicateKeyError:
-                errors.append(f"A product with name_id '{name_id}' already exists.")
+                already_exists(request, "product")
             else:
-                messages.success(request, f"Created product {form['name']}.")
+                created(request, "Product")
                 return redirect("product_list")
 
     return render(
@@ -199,13 +242,15 @@ def product_edit(request, name_id):
 
     if request.method == "POST":
         form = _form_from_post(request.POST)
-        errors, next_name_id, category = _validate_product_form(
+        errors, next_name_id, category, name_taken = _validate_product_form(
             form,
             db,
             exclude_id=product["_id"],
         )
+        if name_taken:
+            already_exists(request, "product")
 
-        if not errors and category is not None:
+        if not errors and not name_taken and category is not None:
             try:
                 db.products.update_one(
                     {"_id": product["_id"]},
@@ -224,9 +269,9 @@ def product_edit(request, name_id):
                     },
                 )
             except DuplicateKeyError:
-                errors.append(f"A product with name_id '{next_name_id}' already exists.")
+                already_exists(request, "product")
             else:
-                messages.success(request, f"Updated product {form['name']}.")
+                updated(request, "Product")
                 return redirect("product_list")
 
     return render(
@@ -254,7 +299,7 @@ def product_set_active(request, name_id):
         {"$set": {"active": active}},
     )
     if active:
-        messages.success(request, f"Reactivated product {product['name']}.")
+        reactivated(request, "Product")
     else:
-        messages.success(request, f"Suspended product {product['name']}.")
-    return redirect("product_list")
+        suspended(request, "Product")
+    return _list_redirect(request)

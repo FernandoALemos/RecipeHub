@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}RecipeHub{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'core/styles.css' %}?v=9">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}?v=17">
 </head>
 <body>
     <header class="site-header">
@@ -14,20 +14,33 @@
             <a href="{% url 'category_list' 'products' %}" class="{% if '/categories/products/' in request.path %}active{% endif %}">Product Categories</a>
             <a href="{% url 'category_list' 'recipes' %}" class="{% if '/categories/recipes/' in request.path %}active{% endif %}">Recipe Categories</a>
             <a href="{% url 'product_list' %}" class="{% if '/products/' in request.path %}active{% endif %}">Products</a>
-            <span class="soon">Recipes</span>
+            <a href="{% url 'recipe_list' %}" class="{% if '/recipes/' in request.path %}active{% endif %}">Recipes</a>
             <span class="soon">Meal Plans</span>
             <span class="soon">Shopping Lists</span>
         </nav>
     </header>
+    {% if messages %}
+        <div class="toast-stack" aria-live="polite">
+            {% for message in messages %}
+                <div class="toast toast-{{ message.level_tag }}" role="alert">
+                    <span>{{ message }}</span>
+                    <button type="button" class="toast-close" aria-label="Dismiss">×</button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
     <main>
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
         {% block content %}{% endblock %}
     </main>
+    <script>
+        document.querySelectorAll(".toast").forEach((toast) => {
+            const close = toast.querySelector(".toast-close");
+            if (close) {
+                close.addEventListener("click", () => toast.remove());
+            }
+            const delay = toast.classList.contains("toast-error") ? 8000 : 4500;
+            window.setTimeout(() => toast.remove(), delay);
+        });
+    </script>
 </body>
 </html>

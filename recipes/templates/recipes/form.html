@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ heading }} — RecipeHub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{{ heading }}</h1>
+    <a href="{{ back_url }}">{{ back_label }}</a>
+</div>
+
+{% if errors %}
+    <ul class="errors">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="post" class="form" id="recipe-form">
+    {% csrf_token %}
+    <label>
+        Name
+        <input type="text" name="name" value="{{ form.name }}" required>
+    </label>
+    {% if is_edit %}
+        <p class="hint">Current name_id: <code>{{ name_id }}</code>. It updates automatically if you change the name.</p>
+    {% endif %}
+    <label>
+        Description
+        <textarea name="description" rows="3">{{ form.description }}</textarea>
+    </label>
+
+    <div class="form-grid">
+        <label>
+            Servings
+            <input type="number" name="servings" min="1" value="{{ form.servings }}" required>
+        </label>
+        <label>
+            Difficulty
+            <select name="difficulty" required>
+                {% for code, label in difficulties %}
+                    <option value="{{ code }}" {% if form.difficulty == code %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            Prep time (minutes)
+            <input type="number" name="prep_time_minutes" min="0" value="{{ form.prep_time_minutes }}">
+        </label>
+        <label>
+            Cook time (minutes)
+            <input type="number" name="cook_time_minutes" min="0" value="{{ form.cook_time_minutes }}">
+        </label>
+    </div>
+
+    <fieldset>
+        <legend>Categories</legend>
+        <div class="checks">
+            {% for category in category_options %}
+                <label class="check">
+                    <input type="checkbox" name="category_ids" value="{{ category.id }}" {% if category.id in form.category_ids %}checked{% endif %}>
+                    <span>{{ category.name }}</span>
+                </label>
+            {% endfor %}
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Ingredients</legend>
+        <p class="hint">Unit starts as the product default. You can change it to another allowed unit for that product.</p>
+        <div class="repeat-list" id="ingredient-list">
+            {% for ingredient in form.ingredients %}
+                <div class="ingredient-row">
+                    <label>
+                        Product
+                        <div class="product-combobox js-product-combobox">
+                            <input type="hidden" name="ingredient_product_id" class="js-product" value="{{ ingredient.product_id }}">
+                            <input
+                                type="search"
+                                class="js-product-search"
+                                placeholder="Search a product"
+                                autocomplete="off"
+                                spellcheck="false"
+                                value="{% for product in product_options %}{% if ingredient.product_id == product.id %}{{ product.name }}{% endif %}{% endfor %}"
+                                aria-label="Search a product"
+                            >
+                            <ul class="product-combobox-list js-product-list" hidden></ul>
+                        </div>
+                    </label>
+                    <div class="qty-unit">
+                        <label>
+                            Quantity
+                            <input type="number" name="ingredient_quantity" value="{{ ingredient.quantity }}" min="0" step="any" inputmode="decimal">
+                        </label>
+                        <label class="unit-field">
+                            <select name="ingredient_unit" class="js-unit" data-selected="{{ ingredient.unit }}" aria-label="Unit">
+                                <option value="">Unit</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label>
+                        Preparation
+                        <input type="text" name="ingredient_preparation" value="{{ ingredient.preparation }}" placeholder="optional">
+                    </label>
+                    <button type="button" class="button button-quiet js-remove-ingredient">Remove</button>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" class="button button-ghost" id="add-ingredient">+ Add ingredient</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Preparation</legend>
+        <div class="repeat-list" id="step-list">
+            {% for step in form.steps %}
+                <div class="step-row">
+                    <span class="step-number js-step-number" aria-hidden="true">{{ forloop.counter }}</span>
+                    <label>
+                        Step
+                        <textarea name="step_description" rows="2">{{ step.description }}</textarea>
+                    </label>
+                    <div class="step-actions">
+                        <button type="button" class="button button-ghost js-move-step-up">Up</button>
+                        <button type="button" class="button button-ghost js-move-step-down">Down</button>
+                        <button type="button" class="button button-quiet js-remove-step">Remove</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" class="button button-ghost" id="add-step">+ Add step</button>
+    </fieldset>
+
+    <label>
+        Tags <span class="hint">(comma-separated)</span>
+        <input type="text" name="tags" value="{{ form.tags }}" placeholder="italian, oven">
+    </label>
+
+    <button type="submit">{{ submit_label }}</button>
+</form>
+
+<template id="ingredient-template">
+    <div class="ingredient-row">
+        <label>
+            Product
+            <div class="product-combobox js-product-combobox">
+                <input type="hidden" name="ingredient_product_id" class="js-product" value="">
+                <input
+                    type="search"
+                    class="js-product-search"
+                    placeholder="Search a product"
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-label="Search a product"
+                >
+                <ul class="product-combobox-list js-product-list" hidden></ul>
+            </div>
+        </label>
+        <div class="qty-unit">
+            <label>
+                Quantity
+                <input type="number" name="ingredient_quantity" min="0" step="any" inputmode="decimal">
+            </label>
+            <label class="unit-field">
+                <select name="ingredient_unit" class="js-unit" data-selected="" aria-label="Unit">
+                    <option value="">Unit</option>
+                </select>
+            </label>
+        </div>
+        <label>
+            Preparation
+            <input type="text" name="ingredient_preparation" placeholder="optional">
+        </label>
+        <button type="button" class="button button-quiet js-remove-ingredient">Remove</button>
+    </div>
+</template>
+
+<template id="step-template">
+    <div class="step-row">
+        <span class="step-number js-step-number" aria-hidden="true">1</span>
+        <label>
+            Step
+            <textarea name="step_description" rows="2"></textarea>
+        </label>
+        <div class="step-actions">
+            <button type="button" class="button button-ghost js-move-step-up">Up</button>
+            <button type="button" class="button button-ghost js-move-step-down">Down</button>
+            <button type="button" class="button button-quiet js-remove-step">Remove</button>
+        </div>
+    </div>
+</template>
+
+{{ product_catalog|json_script:"product-catalog" }}
+{{ product_options|json_script:"product-options" }}
+<script src="{% static 'recipes/recipe_form.js' %}?v=3"></script>
+{% endblock %}

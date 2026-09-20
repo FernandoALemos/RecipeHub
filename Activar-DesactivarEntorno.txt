@@ -1,0 +1,46 @@
+PowerShell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+"S"
+
+Aceptás el cambio. Luego, como ya estás dentro de RecipeHub, ejecutás:
+Activar
+
+Para activar el script activate.ps1 primero tenemos que estar ubicados en el directorio del proyecto
+y donde creamos los escencial del proyecto, en este caso es:
+PS C:\Programas\Repos\RecipeHub>
+
+.\.venv\Scripts\Activate.ps1
+
+luego de activarse deberia de verse algo asi
+
+(.venv) PS C:\Programas\Repos\RecipeHub>
+
+luego corremos el server en manage.py para python
+
+python manage.py runserver
+
+Home page
+http://127.0.0.1:8000/
+
+
+Desactivar
+Starting development server at http://127.0.0.1:8000/
+
+para desactivar oprimimos en la terminal:
+
+"Ctrl + C"
+
+Eso detiene RecipeHub. Después vas a volver a ver algo así:
+
+(.venv) PS C:\Programas\Repos\RecipeHub>
+
+El (.venv) significa que el entorno virtual sigue activo. Para desactivarlo:
+
+deactivate
+
+
+para actualizar los backup de data, realizar el comando:
+"python manage.py export_data"
+
+para ver los paquetes y dependencias requeridas e instaladas 
+pip freeze

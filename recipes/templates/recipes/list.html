@@ -1,52 +1,54 @@
 {% extends "base.html" %}
 
-{% block title %}{{ kind_config.title }} — RecipeHub{% endblock %}
+{% block title %}Recipes — RecipeHub{% endblock %}
 
 {% block content %}
-<nav class="subnav">
-    <a href="{% url 'category_list' 'products' %}" class="{% if kind == 'products' %}active{% endif %}">Product categories</a>
-    <a href="{% url 'category_list' 'recipes' %}" class="{% if kind == 'recipes' %}active{% endif %}">Recipe categories</a>
-</nav>
-
 <div class="page-head">
-    <h1>{{ kind_config.title }}</h1>
-    <a class="button" href="{% url 'category_create' kind %}">+ Add Category</a>
+    <h1>Recipes</h1>
+    <a class="button" href="{% url 'recipe_create' %}">+ Add Recipe</a>
 </div>
 
 {% include "includes/list_filters.html" %}
 
-{% if categories %}
+{% if recipes %}
     <div class="table-wrap">
         <table class="data-table">
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Categories</th>
+                    <th>Servings</th>
+                    <th>Difficulty</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for category in categories %}
-                    <tr {% if not category.active %}class="is-inactive"{% endif %}>
+                {% for recipe in recipes %}
+                    <tr {% if not recipe.active %}class="is-inactive"{% endif %}>
                         <td>
-                            <strong>{{ category.name }}</strong>
-                            {% if category.description %}
-                                <div class="meta">{{ category.description }}</div>
+                            <strong>{{ recipe.name }}</strong>
+                            {% if recipe.description %}
+                                <div class="meta">{{ recipe.description }}</div>
                             {% endif %}
                         </td>
+                        <td>{{ recipe.category_names }}</td>
+                        <td>{{ recipe.servings }}</td>
+                        <td>{{ recipe.difficulty }}</td>
                         <td>
-                            {% if category.active %}
+                            {% if recipe.active %}
                                 <span class="badge badge-active">Active</span>
                             {% else %}
                                 <span class="badge badge-inactive">Inactive</span>
                             {% endif %}
                         </td>
                         <td class="actions">
-                            <a class="button button-ghost" href="{% url 'category_edit' kind category.name_id %}">Edit</a>
-                            <form method="post" action="{% url 'category_set_active' kind category.name_id %}">
+                            <a class="button button-ghost" href="{% url 'recipe_detail' recipe.name_id %}">View</a>
+                            <a class="button button-ghost" href="{% url 'recipe_edit' recipe.name_id %}">Edit</a>
+                            <form method="post" action="{% url 'recipe_set_active' recipe.name_id %}">
                                 {% csrf_token %}
                                 {% include "includes/filter_hidden_fields.html" %}
-                                {% if category.active %}
+                                {% if recipe.active %}
                                     <input type="hidden" name="active" value="0">
                                     <button type="submit" class="button button-quiet">Suspend</button>
                                 {% else %}
@@ -61,8 +63,8 @@
         </table>
     </div>
 {% elif filters_active %}
-    <p>No categories match these filters.</p>
+    <p>No recipes match these filters.</p>
 {% else %}
-    <p>No categories yet.</p>
+    <p>No recipes yet.</p>
 {% endif %}
 {% endblock %}

@@ -8,6 +8,8 @@
     <a class="button" href="{% url 'product_create' %}">+ Add Product</a>
 </div>
 
+{% include "includes/list_filters.html" %}
+
 {% if products %}
     <div class="table-wrap">
         <table class="data-table">
@@ -22,21 +24,22 @@
             </thead>
             <tbody>
                 {% for product in products %}
-                    <tr {% if not product.active %}class="is-suspended"{% endif %}>
+                    <tr {% if not product.active %}class="is-inactive"{% endif %}>
                         <td><strong>{{ product.name }}</strong></td>
                         <td>{{ product.category_name }}</td>
                         <td>{{ product.default_unit }}</td>
                         <td>
                             {% if product.active %}
-                                <span class="status status-active">Active</span>
+                                <span class="badge badge-active">Active</span>
                             {% else %}
-                                <span class="status status-suspended">Suspended</span>
+                                <span class="badge badge-inactive">Inactive</span>
                             {% endif %}
                         </td>
                         <td class="actions">
                             <a class="button button-ghost" href="{% url 'product_edit' product.name_id %}">Edit</a>
                             <form method="post" action="{% url 'product_set_active' product.name_id %}">
                                 {% csrf_token %}
+                                {% include "includes/filter_hidden_fields.html" %}
                                 {% if product.active %}
                                     <input type="hidden" name="active" value="0">
                                     <button type="submit" class="button button-quiet">Suspend</button>
@@ -51,6 +54,8 @@
             </tbody>
         </table>
     </div>
+{% elif filters_active %}
+    <p>No products match these filters.</p>
 {% else %}
     <p>No products yet.</p>
 {% endif %}

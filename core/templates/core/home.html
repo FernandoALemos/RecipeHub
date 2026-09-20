@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>RecipeHub</h1>
-<p class="lede">A kitchen database: products, recipes and plans — starting with the catalog.</p>
+<p class="lede">A kitchen database: products, recipes and plans.</p>
 
 <nav class="home-grid">
     <a class="home-card" href="{% url 'category_list' 'products' %}">
@@ -14,7 +14,7 @@
         <small>Classify dishes such as Desserts or Pasta</small>
     </a>
     <a class="home-card" href="{% url 'product_list' %}">Products</a>
-    <span class="home-card disabled">Recipes <small>coming later</small></span>
+    <a class="home-card" href="{% url 'recipe_list' %}">Recipes</a>
     <span class="home-card disabled">Meal Plans <small>coming later</small></span>
     <span class="home-card disabled">Shopping Lists <small>coming later</small></span>
 </nav>

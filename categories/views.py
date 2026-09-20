@@ -1,12 +1,21 @@
-from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.decorators.http import require_POST
 from pymongo.errors import DuplicateKeyError
 
 from config.mongo import get_db
 from core.ids import generate_name_id
-from core.store import ensure_indexes, find_by_name_id
+from core.notices import already_exists, created, reactivated, suspended, updated
+from core.store import (
+    ensure_indexes,
+    filters_are_active,
+    find_by_name_id,
+    list_filter_values,
+    list_url_with_filters,
+    matches_category_search,
+    matches_status,
+)
 
 from .kinds import CATEGORY_KINDS
 
@@ -45,17 +54,34 @@ def category_hub(request):
     return render(request, "categories/hub.html")
 
 
+def _list_redirect(kind, request):
+    filters = list_filter_values(request)
+    return redirect(list_url_with_filters(reverse("category_list", kwargs={"kind": kind}), filters))
+
+
 def category_list(request, kind):
     _kind_config(kind)
     db = get_db()
-    items = [
-        {**item, "active": item.get("active", True)}
-        for item in _collection(db, kind).find().sort("name", 1)
-    ]
+    filters = list_filter_values(request)
+    items = []
+    for item in _collection(db, kind).find().sort("name", 1):
+        active = item.get("active", True)
+        if not matches_status(active, filters["status"]):
+            continue
+        if not matches_category_search(item, filters["q"]):
+            continue
+        items.append({**item, "active": active})
     return render(
         request,
         "categories/list.html",
-        _page_context(kind, categories=items),
+        _page_context(
+            kind,
+            categories=items,
+            filters=filters,
+            filters_active=filters_are_active(filters),
+            clear_url=reverse("category_list", kwargs={"kind": kind}),
+            search_placeholder="Search by name or description",
+        ),
     )
 
 
@@ -78,9 +104,8 @@ def category_create(request, kind):
         ensure_indexes(db)
         collection = _collection(db, kind)
         if name_id and find_by_name_id(collection, name_id):
-            errors.append(f"A category with name_id '{name_id}' already exists.")
-
-        if not errors:
+            already_exists(request, "category")
+        elif not errors:
             try:
                 collection.insert_one(
                     {
@@ -91,9 +116,9 @@ def category_create(request, kind):
                     }
                 )
             except DuplicateKeyError:
-                errors.append(f"A category with name_id '{name_id}' already exists.")
+                already_exists(request, "category")
             else:
-                messages.success(request, f"Created category {form['name']}.")
+                created(request, "Category")
                 return redirect("category_list", kind=kind)
 
     return render(
@@ -132,9 +157,8 @@ def category_edit(request, kind, name_id):
         if not next_name_id:
             errors.append("Name could not be converted into a unique name_id.")
         elif find_by_name_id(collection, next_name_id, exclude_id=category["_id"]):
-            errors.append(f"A category with name_id '{next_name_id}' already exists.")
-
-        if not errors:
+            already_exists(request, "category")
+        elif not errors:
             try:
                 collection.update_one(
                     {"_id": category["_id"]},
@@ -148,9 +172,9 @@ def category_edit(request, kind, name_id):
                     },
                 )
             except DuplicateKeyError:
-                errors.append(f"A category with name_id '{next_name_id}' already exists.")
+                already_exists(request, "category")
             else:
-                messages.success(request, f"Updated category {form['name']}.")
+                updated(request, "Category")
                 return redirect("category_list", kind=kind)
 
     return render(
@@ -179,7 +203,7 @@ def category_set_active(request, kind, name_id):
         {"$set": {"active": active}},
     )
     if active:
-        messages.success(request, f"Reactivated category {category['name']}.")
+        reactivated(request, "Category")
     else:
-        messages.success(request, f"Suspended category {category['name']}.")
-    return redirect("category_list", kind=kind)
+        suspended(request, "Category")
+    return _list_redirect(kind, request)
