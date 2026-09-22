@@ -23,7 +23,7 @@
         "name_id": "apple_cider_vinegar",
         "description": "Apple cider vinegar",
         "aliases": [],
-        "category_name_id": "condiments_sauces",
+        "category_name_id": "water_cooking_liquids",
         "measurement_types": [
             "volume",
             "culinary_volume"
@@ -119,6 +119,21 @@
         "active": true
     },
     {
+        "name": "Dry Yeast",
+        "name_id": "dry_yeast",
+        "description": "Yeast",
+        "aliases": [],
+        "category_name_id": "other",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
         "name": "Egg",
         "name_id": "egg",
         "description": "Chicken egg",
@@ -139,6 +154,21 @@
             "g"
         ],
         "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Fresh Yeast",
+        "name_id": "fresh_yeast",
+        "description": "Yeast",
+        "aliases": [],
+        "category_name_id": "other",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g"
+        ],
+        "default_unit": "g",
         "active": true
     },
     {
@@ -238,6 +268,22 @@
         "active": true
     },
     {
+        "name": "Muzzarella",
+        "name_id": "muzzarella",
+        "description": "Cheese Type",
+        "aliases": [],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg"
+        ],
+        "default_unit": "kg",
+        "active": true
+    },
+    {
         "name": "Natural Yogurt",
         "name_id": "natural_yogurt",
         "description": "Plain unsweetened yogurt",
@@ -301,6 +347,23 @@
         "active": true
     },
     {
+        "name": "Olives",
+        "name_id": "olives",
+        "description": "",
+        "aliases": [],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
         "name": "Onion",
         "name_id": "onion",
         "description": "Fresh onion",
@@ -320,6 +383,42 @@
         "active": true
     },
     {
+        "name": "Orange",
+        "name_id": "orange",
+        "description": "Orange, Naranja",
+        "aliases": [],
+        "category_name_id": "fruits",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit",
+            "half_unit"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Oregano",
+        "name_id": "oregano",
+        "description": "If it is dry it tastes more than if it is fresh",
+        "aliases": [],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "tsp",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
         "name": "Parsley",
         "name_id": "parsley",
         "description": "Fresh parsley",
@@ -336,6 +435,26 @@
             "to_taste"
         ],
         "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Pork Ribs",
+        "name_id": "pork_ribs",
+        "description": "Costillas de cerdo",
+        "aliases": [
+            "Ribs"
+        ],
+        "category_name_id": "meat",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit",
+            "half_unit"
+        ],
+        "default_unit": "kg",
         "active": true
     },
     {
@@ -454,6 +573,24 @@
             "kg"
         ],
         "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Tomato Sauce",
+        "name_id": "tomato_sauce",
+        "description": "",
+        "aliases": [],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "mass",
+            "volume"
+        ],
+        "allowed_units": [
+            "g",
+            "ml",
+            "l"
+        ],
+        "default_unit": "ml",
         "active": true
     },
     {

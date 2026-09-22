@@ -60,6 +60,12 @@
         "active": true
     },
     {
+        "name": "Pizzas",
+        "name_id": "pizzas",
+        "description": "Pizza Muzzarella, Pizza Napolitan, Pizza Chicago, Pizza Pepperoni, etc..",
+        "active": true
+    },
+    {
         "name": "Poultry Dishes",
         "name_id": "poultry_dishes",
         "description": "Chicken, turkey and other poultry dishes",
