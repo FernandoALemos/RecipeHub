@@ -39,6 +39,22 @@ def request_param(request, name: str, default: str = "") -> str:
     return raw.strip()
 
 
+def request_param_list(request, name: str) -> list[str]:
+    """Collect repeated or comma-separated query/post values, de-duplicated."""
+    values = list(request.POST.getlist(name))
+    if not values:
+        values = list(request.GET.getlist(name))
+    cleaned: list[str] = []
+    seen: set[str] = set()
+    for raw in values:
+        for part in str(raw).split(","):
+            item = part.strip()
+            if item and item not in seen:
+                seen.add(item)
+                cleaned.append(item)
+    return cleaned
+
+
 def search_query(request) -> str:
     return request_param(request, "q")
 
@@ -47,6 +63,48 @@ def contains_ci(text: str, query: str) -> bool:
     if not query:
         return True
     return query.casefold() in (text or "").casefold()
+
+
+def matches_user_search(user, query: str) -> bool:
+    if not query:
+        return True
+    return any(
+        contains_ci(user.get(field, ""), query)
+        for field in ("username", "email", "first_name", "last_name")
+    )
+
+
+def matches_role(role: str, role_filter: str) -> bool:
+    if not role_filter:
+        return True
+    return (role or "") == role_filter
+
+
+def matches_ingredients_filter(
+    recipe_product_name_ids: set[str] | list[str],
+    selected_name_ids: list[str],
+    mode: str,
+) -> bool:
+    """Filter recipes by selected product name_ids.
+
+    mode ``all``: recipe must contain every selected ingredient.
+    mode ``any``: recipe must contain at least one selected ingredient.
+    """
+    if not selected_name_ids:
+        return True
+    selected = set(selected_name_ids)
+    present = selected & set(recipe_product_name_ids)
+    if mode == "any":
+        return bool(present)
+    return selected <= set(recipe_product_name_ids)
+
+
+INGREDIENT_MATCH_FILTERS = ("all", "any")
+
+
+def ingredient_match_filter(request) -> str:
+    raw = request_param(request, "ingredient_match", "all")
+    return raw if raw in INGREDIENT_MATCH_FILTERS else "all"
 
 
 def matches_any_text(query: str, *texts: str) -> bool:
@@ -109,6 +167,7 @@ TIME_FILTER_OPTIONS = [
     ("120", "120 min"),
 ]
 
+
 def list_filter_values(request, *names: str) -> dict[str, str]:
     values = {"q": search_query(request), "status": status_filter(request)}
     for name in names:
@@ -116,29 +175,41 @@ def list_filter_values(request, *names: str) -> dict[str, str]:
     return values
 
 
-def filters_are_active(filters: dict[str, str], defaults: dict[str, str] | None = None) -> bool:
-    defaults = defaults or {"status": "all"}
+def _filter_value_is_default(key: str, value, defaults: dict) -> bool:
+    if isinstance(value, (list, tuple)):
+        return len(value) == 0
+    return value == defaults.get(key, "")
+
+
+def filters_are_active(filters: dict, defaults: dict | None = None) -> bool:
+    defaults = defaults or {"status": "all", "ingredient_match": "all"}
     for key, value in filters.items():
         if not value:
             continue
-        if value != defaults.get(key, ""):
-            return True
+        if _filter_value_is_default(key, value, defaults):
+            continue
+        return True
     return False
 
 
-def filters_querystring(filters: dict[str, str], defaults: dict[str, str] | None = None) -> str:
-    defaults = defaults or {"status": "all"}
+def filters_querystring(filters: dict, defaults: dict | None = None) -> str:
+    defaults = defaults or {"status": "all", "ingredient_match": "all"}
     params = []
     for key, value in filters.items():
         if not value:
             continue
-        if value == defaults.get(key, ""):
+        if _filter_value_is_default(key, value, defaults):
             continue
-        params.append((key, value))
+        if isinstance(value, (list, tuple)):
+            for item in value:
+                if item:
+                    params.append((key, item))
+        else:
+            params.append((key, value))
     return urlencode(params)
 
 
-def list_url_with_filters(base_url: str, filters: dict[str, str]) -> str:
+def list_url_with_filters(base_url: str, filters: dict) -> str:
     query = filters_querystring(filters)
     return f"{base_url}?{query}" if query else base_url
 
@@ -182,3 +253,5 @@ def ensure_indexes(db) -> None:
     db.recipe_categories.create_index("name_id", unique=True)
     db.products.create_index("name_id", unique=True)
     db.recipes.create_index("name_id", unique=True)
+    db.users.create_index("username", unique=True)
+    db.users.create_index("email", unique=True)

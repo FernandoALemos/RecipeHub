@@ -1,14 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Recipes — RecipeHub{% endblock %}
 
 {% block content %}
 <div class="page-head">
     <h1>Recipes</h1>
-    <a class="button" href="{% url 'recipe_create' %}">+ Add Recipe</a>
+    {% if can_mutate_catalog %}
+        <a class="button" href="{% url 'recipe_create' %}">+ Add Recipe</a>
+    {% endif %}
 </div>
 
 {% include "includes/list_filters.html" %}
+
+{% if enable_ingredient_multi_filter %}
+    {{ ingredient_filter_options|json_script:"ingredient-filter-options" }}
+    <script src="{% static 'recipes/ingredient_filter.js' %}?v=1"></script>
+{% endif %}
 
 {% if recipes %}
     <div class="table-wrap">
@@ -44,18 +52,22 @@
                         </td>
                         <td class="actions">
                             <a class="button button-ghost" href="{% url 'recipe_detail' recipe.name_id %}">View</a>
-                            <a class="button button-ghost" href="{% url 'recipe_edit' recipe.name_id %}">Edit</a>
-                            <form method="post" action="{% url 'recipe_set_active' recipe.name_id %}">
-                                {% csrf_token %}
-                                {% include "includes/filter_hidden_fields.html" %}
-                                {% if recipe.active %}
-                                    <input type="hidden" name="active" value="0">
-                                    <button type="submit" class="button button-quiet">Suspend</button>
-                                {% else %}
-                                    <input type="hidden" name="active" value="1">
-                                    <button type="submit" class="button">Reactivate</button>
-                                {% endif %}
-                            </form>
+                            {% if can_mutate_catalog %}
+                                <a class="button button-ghost" href="{% url 'recipe_edit' recipe.name_id %}">Edit</a>
+                            {% endif %}
+                            {% if can_manage_active %}
+                                <form method="post" action="{% url 'recipe_set_active' recipe.name_id %}">
+                                    {% csrf_token %}
+                                    {% include "includes/filter_hidden_fields.html" %}
+                                    {% if recipe.active %}
+                                        <input type="hidden" name="active" value="0">
+                                        <button type="submit" class="button button-quiet">Suspend</button>
+                                    {% else %}
+                                        <input type="hidden" name="active" value="1">
+                                        <button type="submit" class="button">Reactivate</button>
+                                    {% endif %}
+                                </form>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

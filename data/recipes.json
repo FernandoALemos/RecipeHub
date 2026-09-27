@@ -1,5 +1,1381 @@
 [
     {
+        "name": "Baked Salmon",
+        "name_id": "baked_salmon",
+        "description": "Oven-baked salmon with olive oil, lemon, garlic and herbs.",
+        "servings": 2,
+        "category_name_ids": [
+            "main_courses",
+            "fish_seafood_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "salmon",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": "fillets"
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "lemon",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "sliced or juiced"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 2,
+                "unit": "clove",
+                "preparation": "minced"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "parsley",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "chopped"
+            },
+            {
+                "product_name_id": "butter",
+                "quantity": 20,
+                "unit": "g",
+                "preparation": "optional dots"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Preheat\n\nPreheat the oven to 200°C. Line a baking tray with parchment."
+            },
+            {
+                "step_number": 2,
+                "description": "Season\n\nPlace the salmon on the tray. Drizzle with olive oil, scatter garlic, season with salt and pepper, and top with lemon and butter if using."
+            },
+            {
+                "step_number": 3,
+                "description": "Bake\n\nBake 12–15 minutes until the salmon flakes easily. Finish with parsley and serve."
+            }
+        ],
+        "prep_time_minutes": 10,
+        "cook_time_minutes": 15,
+        "difficulty": "easy",
+        "tags": [
+            "fish",
+            "salmon",
+            "oven_baked",
+            "weeknight",
+            "homemade"
+        ],
+        "active": true
+    },
+    {
+        "name": "Banana Oat Pancakes",
+        "name_id": "banana_oat_pancakes",
+        "description": "Simple banana and oat pancakes, naturally sweet and quick to make.",
+        "servings": 2,
+        "category_name_ids": [
+            "desserts",
+            "other"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "banana",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": "ripe"
+            },
+            {
+                "product_name_id": "oats",
+                "quantity": 80,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "egg",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "milk",
+                "quantity": 60,
+                "unit": "ml",
+                "preparation": "optional, to loosen"
+            },
+            {
+                "product_name_id": "baking_powder",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "vanilla_extract",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "optional"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "pinch",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "butter",
+                "quantity": 15,
+                "unit": "g",
+                "preparation": "or oil for the pan"
+            },
+            {
+                "product_name_id": "honey",
+                "quantity": 1,
+                "unit": "tbsp",
+                "preparation": "to serve"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Blend the batter\n\nMash the bananas and mix with oats, eggs, baking powder, salt, vanilla and a splash of milk until combined. Rest 5 minutes so the oats soften."
+            },
+            {
+                "step_number": 2,
+                "description": "Cook\n\nHeat a lightly greased pan over medium heat. Spoon small pancakes and cook 2–3 minutes per side until golden."
+            },
+            {
+                "step_number": 3,
+                "description": "Serve\n\nServe warm with honey or fresh fruit."
+            }
+        ],
+        "prep_time_minutes": 10,
+        "cook_time_minutes": 15,
+        "difficulty": "easy",
+        "tags": [
+            "breakfast",
+            "banana",
+            "oats",
+            "sweet",
+            "homemade",
+            "vegetarian"
+        ],
+        "active": true
+    },
+    {
+        "name": "Beef Burger",
+        "name_id": "beef_burger",
+        "description": "Homemade beef burger patties served on bread with fresh toppings.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "meat_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "ground_beef",
+                "quantity": 500,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "onion",
+                "quantity": 1,
+                "unit": "half_unit",
+                "preparation": "finely chopped"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 1,
+                "unit": "clove",
+                "preparation": "minced"
+            },
+            {
+                "product_name_id": "egg",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "breadcrumbs",
+                "quantity": 40,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 1,
+                "unit": "tbsp",
+                "preparation": "for cooking"
+            },
+            {
+                "product_name_id": "bread",
+                "quantity": 4,
+                "unit": "unit",
+                "preparation": "burger buns or thick slices"
+            },
+            {
+                "product_name_id": "lettuce",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "tomato",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "sliced"
+            },
+            {
+                "product_name_id": "cheddar_cheese",
+                "quantity": 80,
+                "unit": "g",
+                "preparation": "optional slices"
+            },
+            {
+                "product_name_id": "mayonnaise",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": "optional"
+            },
+            {
+                "product_name_id": "mustard",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "optional"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Make the patties\n\nMix ground beef, onion, garlic, egg, breadcrumbs, salt and pepper. Shape into 4 patties and chill 10 minutes."
+            },
+            {
+                "step_number": 2,
+                "description": "Cook\n\nHeat olive oil in a skillet over medium-high heat. Cook patties 4–5 minutes per side until cooked through. Add cheese in the last minute if using."
+            },
+            {
+                "step_number": 3,
+                "description": "Assemble\n\nToast the bread lightly. Spread mayonnaise and mustard if using, then add lettuce, tomato and the burger patty. Serve immediately."
+            }
+        ],
+        "prep_time_minutes": 20,
+        "cook_time_minutes": 15,
+        "difficulty": "easy",
+        "tags": [
+            "beef",
+            "burger",
+            "weeknight",
+            "homemade"
+        ],
+        "active": true
+    },
+    {
+        "name": "Chicken Alfredo",
+        "name_id": "chicken_alfredo",
+        "description": "Creamy Alfredo pasta with pan-seared chicken breast, butter, cream and parmesan.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "pasta",
+            "poultry_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "pasta",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": "fettuccine or similar"
+            },
+            {
+                "product_name_id": "chicken_breast",
+                "quantity": 500,
+                "unit": "g",
+                "preparation": "sliced into strips or cutlets"
+            },
+            {
+                "product_name_id": "butter",
+                "quantity": 80,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "cream",
+                "quantity": 250,
+                "unit": "ml",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "parmesan_cheese",
+                "quantity": 80,
+                "unit": "g",
+                "preparation": "freshly grated"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 2,
+                "unit": "clove",
+                "preparation": "minced"
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 1,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "freshly ground"
+            },
+            {
+                "product_name_id": "parsley",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "optional, chopped"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Season and cook the chicken\n\nPat the chicken dry, season with salt and black pepper. Heat the olive oil in a skillet over medium-high heat and cook the chicken until golden and cooked through, about 4–5 minutes per side (or until strips are done). Transfer to a plate and slice if needed."
+            },
+            {
+                "step_number": 2,
+                "description": "Cook the pasta\n\nBoil the pasta in salted water until al dente. Reserve about 1 cup of pasta water, then drain."
+            },
+            {
+                "step_number": 3,
+                "description": "Start the Alfredo sauce\n\nIn the same skillet, melt the butter over medium-low heat. Add the garlic and cook for 30 seconds without browning."
+            },
+            {
+                "step_number": 4,
+                "description": "Add cream and cheese\n\nPour in the cream and simmer 2–3 minutes. Stir in the parmesan until smooth. Loosen with pasta water if the sauce is too thick. Season to taste."
+            },
+            {
+                "step_number": 5,
+                "description": "Combine\n\nToss the pasta in the sauce, then fold in the chicken. Warm through for 1 minute."
+            },
+            {
+                "step_number": 6,
+                "description": "Serve\n\nPlate immediately, topped with extra parmesan, black pepper and parsley if using."
+            }
+        ],
+        "prep_time_minutes": 15,
+        "cook_time_minutes": 25,
+        "difficulty": "easy",
+        "tags": [
+            "italian",
+            "pasta",
+            "chicken",
+            "cream",
+            "weeknight",
+            "homemade"
+        ],
+        "active": true
+    },
+    {
+        "name": "Chicken Caesar Salad",
+        "name_id": "chicken_caesar_salad",
+        "description": "Crisp lettuce salad with grilled chicken, parmesan, homemade Caesar-style dressing and crunchy breadcrumbs.",
+        "servings": 2,
+        "category_name_ids": [
+            "main_courses",
+            "salads",
+            "poultry_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "chicken_breast",
+                "quantity": 300,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "lettuce",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "washed and torn"
+            },
+            {
+                "product_name_id": "parmesan_cheese",
+                "quantity": 40,
+                "unit": "g",
+                "preparation": "shaved or grated"
+            },
+            {
+                "product_name_id": "mayonnaise",
+                "quantity": 3,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "mustard",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "lemon",
+                "quantity": 1,
+                "unit": "half_unit",
+                "preparation": "juiced"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 1,
+                "unit": "clove",
+                "preparation": "minced or grated"
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "breadcrumbs",
+                "quantity": 40,
+                "unit": "g",
+                "preparation": "for crunchy topping"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Cook the chicken\n\nSeason the chicken breast with salt and black pepper. Heat 1 tbsp olive oil in a skillet over medium-high heat and cook until golden and cooked through, about 5–6 minutes per side. Rest a few minutes, then slice."
+            },
+            {
+                "step_number": 2,
+                "description": "Make the dressing\n\nIn a bowl, whisk mayonnaise, mustard, lemon juice, garlic and the remaining olive oil. Season with salt and black pepper. Thin with a teaspoon of water if needed."
+            },
+            {
+                "step_number": 3,
+                "description": "Toast the crumbs\n\nIn a dry pan over medium heat, toast the breadcrumbs until golden and crisp, 2–3 minutes. Set aside."
+            },
+            {
+                "step_number": 4,
+                "description": "Assemble\n\nToss the lettuce with most of the dressing. Top with sliced chicken, parmesan, toasted breadcrumbs and the remaining dressing. Serve immediately."
+            }
+        ],
+        "prep_time_minutes": 15,
+        "cook_time_minutes": 15,
+        "difficulty": "easy",
+        "tags": [
+            "salad",
+            "chicken",
+            "fresh",
+            "weeknight",
+            "homemade"
+        ],
+        "active": true
+    },
+    {
+        "name": "Chicken Curry",
+        "name_id": "chicken_curry",
+        "description": "Mild coconut chicken curry with onion, tomato, yogurt and warm spices, served with rice.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "poultry_dishes",
+            "rice_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "chicken_thigh",
+                "quantity": 700,
+                "unit": "g",
+                "preparation": "boneless, bite-size pieces"
+            },
+            {
+                "product_name_id": "onion",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": "finely chopped"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 4,
+                "unit": "clove",
+                "preparation": "minced"
+            },
+            {
+                "product_name_id": "ginger",
+                "quantity": 20,
+                "unit": "g",
+                "preparation": "grated"
+            },
+            {
+                "product_name_id": "tomato",
+                "quantity": 3,
+                "unit": "unit",
+                "preparation": "chopped"
+            },
+            {
+                "product_name_id": "curry_powder",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "turmeric",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "cumin",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "paprika",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "coconut_milk",
+                "quantity": 400,
+                "unit": "ml",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "natural_yogurt",
+                "quantity": 100,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "vegetable_oil",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "lemon",
+                "quantity": 0.5,
+                "unit": "unit",
+                "preparation": "juiced"
+            },
+            {
+                "product_name_id": "cilantro",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "chopped"
+            },
+            {
+                "product_name_id": "rice",
+                "quantity": 300,
+                "unit": "g",
+                "preparation": "to serve"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Prep\n\nCut the chicken into bite-size pieces and season lightly with salt and black pepper. Chop the onion and tomato; mince the garlic and grate the ginger."
+            },
+            {
+                "step_number": 2,
+                "description": "Brown the chicken\n\nHeat the oil in a wide pot over medium-high heat. Brown the chicken in batches until lightly golden, then transfer to a plate."
+            },
+            {
+                "step_number": 3,
+                "description": "Build the base\n\nLower the heat to medium. Soften the onion 6–8 minutes. Add garlic and ginger; cook 1 minute until fragrant."
+            },
+            {
+                "step_number": 4,
+                "description": "Spice and tomato\n\nStir in curry powder, turmeric, cumin and paprika for 30–60 seconds. Add the tomato and cook until it softens into a thick sauce, about 5 minutes."
+            },
+            {
+                "step_number": 5,
+                "description": "Simmer\n\nReturn the chicken to the pot. Pour in the coconut milk, bring to a gentle simmer, cover and cook 18–22 minutes until the chicken is tender."
+            },
+            {
+                "step_number": 6,
+                "description": "Finish\n\nOff the heat, stir in the yogurt and lemon juice. Taste and adjust salt. Scatter cilantro over the top."
+            },
+            {
+                "step_number": 7,
+                "description": "Serve\n\nCook the rice separately and serve the curry spooned over or beside it."
+            }
+        ],
+        "prep_time_minutes": 20,
+        "cook_time_minutes": 35,
+        "difficulty": "medium",
+        "tags": [
+            "indian",
+            "curry",
+            "chicken",
+            "coconut",
+            "rice",
+            "weeknight"
+        ],
+        "active": true
+    },
+    {
+        "name": "Chickpea Salad",
+        "name_id": "chickpea_salad",
+        "description": "Fresh salad of chickpeas with vegetables, lemon and olive oil.",
+        "servings": 4,
+        "category_name_ids": [
+            "salads",
+            "side_dishes",
+            "main_courses"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "chickpeas",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": "cooked and drained"
+            },
+            {
+                "product_name_id": "tomato",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": "diced"
+            },
+            {
+                "product_name_id": "onion",
+                "quantity": 1,
+                "unit": "half_unit",
+                "preparation": "finely chopped"
+            },
+            {
+                "product_name_id": "bell_pepper",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "diced"
+            },
+            {
+                "product_name_id": "lettuce",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "optional base"
+            },
+            {
+                "product_name_id": "parsley",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "chopped"
+            },
+            {
+                "product_name_id": "lemon",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "juiced"
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 3,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "cumin",
+                "quantity": 1,
+                "unit": "pinch",
+                "preparation": "optional"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Combine\n\nIn a bowl, mix chickpeas, tomato, onion, bell pepper and parsley."
+            },
+            {
+                "step_number": 2,
+                "description": "Dress\n\nWhisk lemon juice, olive oil, salt, pepper and cumin. Pour over the salad and toss."
+            },
+            {
+                "step_number": 3,
+                "description": "Serve\n\nServe as is or over lettuce. Best after resting 10 minutes."
+            }
+        ],
+        "prep_time_minutes": 15,
+        "cook_time_minutes": 0,
+        "difficulty": "easy",
+        "tags": [
+            "salad",
+            "vegetarian",
+            "legumes",
+            "fresh",
+            "no_cook"
+        ],
+        "active": true
+    },
+    {
+        "name": "French Toast",
+        "name_id": "french_toast",
+        "description": "Golden bread slices soaked in sweet egg-milk batter and pan-fried in butter.",
+        "servings": 2,
+        "category_name_ids": [
+            "desserts",
+            "other"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "bread",
+                "quantity": 6,
+                "unit": "unit",
+                "preparation": "thick slices"
+            },
+            {
+                "product_name_id": "egg",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "milk",
+                "quantity": 120,
+                "unit": "ml",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "sugar",
+                "quantity": 1,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "vanilla_extract",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "butter",
+                "quantity": 30,
+                "unit": "g",
+                "preparation": "for frying"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "pinch",
+                "preparation": ""
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Make the batter\n\nWhisk eggs, milk, sugar, vanilla and a pinch of salt in a shallow dish."
+            },
+            {
+                "step_number": 2,
+                "description": "Soak the bread\n\nDip each bread slice in the batter for a few seconds per side until coated but not falling apart."
+            },
+            {
+                "step_number": 3,
+                "description": "Fry\n\nMelt butter in a pan over medium heat. Cook the slices 2–3 minutes per side until golden."
+            },
+            {
+                "step_number": 4,
+                "description": "Serve\n\nServe hot with honey, sugar or fresh fruit."
+            }
+        ],
+        "prep_time_minutes": 10,
+        "cook_time_minutes": 15,
+        "difficulty": "easy",
+        "tags": [
+            "breakfast",
+            "sweet",
+            "eggs",
+            "homemade",
+            "vegetarian"
+        ],
+        "active": true
+    },
+    {
+        "name": "Lentil Stew",
+        "name_id": "lentil_stew",
+        "description": "Hearty stew of lentils with onion, carrot, garlic and olive oil.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "soups_stews"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "lentils",
+                "quantity": 300,
+                "unit": "g",
+                "preparation": "rinsed"
+            },
+            {
+                "product_name_id": "onion",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "chopped"
+            },
+            {
+                "product_name_id": "carrot",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": "diced"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 2,
+                "unit": "clove",
+                "preparation": "minced"
+            },
+            {
+                "product_name_id": "tomato",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "optional, diced"
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "water",
+                "quantity": 1,
+                "unit": "l",
+                "preparation": "or as needed"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "paprika",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "cumin",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "optional"
+            },
+            {
+                "product_name_id": "parsley",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "to serve"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Sauté aromatics\n\nHeat olive oil in a pot. Cook onion and carrot until soft, then add garlic, paprika and cumin for 1 minute."
+            },
+            {
+                "step_number": 2,
+                "description": "Add lentils\n\nStir in lentils and tomato if using. Cover with water by about 3 cm."
+            },
+            {
+                "step_number": 3,
+                "description": "Simmer\n\nBring to a boil, then simmer gently 25–35 minutes until lentils are tender. Add water if needed. Season with salt and pepper."
+            },
+            {
+                "step_number": 4,
+                "description": "Serve\n\nAdjust seasoning and finish with parsley. Serve hot."
+            }
+        ],
+        "prep_time_minutes": 15,
+        "cook_time_minutes": 40,
+        "difficulty": "easy",
+        "tags": [
+            "vegetarian",
+            "legumes",
+            "stew",
+            "homemade",
+            "comfort_food"
+        ],
+        "active": true
+    },
+    {
+        "name": "Margherita Pizza",
+        "name_id": "margherita_pizza",
+        "description": "Classic Neapolitan-style pizza with tomato sauce, mozzarella, fresh basil and olive oil.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "pizzas"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "wheat_flour_000",
+                "quantity": 300,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "water",
+                "quantity": 180,
+                "unit": "ml",
+                "preparation": "lukewarm"
+            },
+            {
+                "product_name_id": "fresh_yeast",
+                "quantity": 10,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 6,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "tomato_sauce",
+                "quantity": 150,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "muzzarella",
+                "quantity": 200,
+                "unit": "g",
+                "preparation": "torn or sliced"
+            },
+            {
+                "product_name_id": "basil",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "fresh leaves"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 1,
+                "unit": "clove",
+                "preparation": "optional, minced into the sauce"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Activate the yeast\n\nDissolve the fresh yeast in the lukewarm water and let it rest for 5 minutes until foamy."
+            },
+            {
+                "step_number": 2,
+                "description": "Make the dough\n\nAdd the flour, salt and 1 tbsp olive oil. Mix and knead for about 10 minutes until the dough is smooth and elastic."
+            },
+            {
+                "step_number": 3,
+                "description": "First rise\n\nCover and let the dough rise for about 1 hour, or until doubled in size."
+            },
+            {
+                "step_number": 4,
+                "description": "Shape the base\n\nStretch the dough into a round pizza (about 30–32 cm), leaving a slightly thicker edge for the crust. Place on a lightly oiled tray or pizza stone."
+            },
+            {
+                "step_number": 5,
+                "description": "Add the sauce\n\nSpread the tomato sauce evenly over the dough. If using garlic, stir it into the sauce first."
+            },
+            {
+                "step_number": 6,
+                "description": "Add the cheese\n\nDistribute the mozzarella over the sauce, leaving some gaps so the tomato shows through."
+            },
+            {
+                "step_number": 7,
+                "description": "Bake\n\nBake in a preheated oven at 250°C for 10–12 minutes, until the crust is golden and the cheese is melted and lightly browned."
+            },
+            {
+                "step_number": 8,
+                "description": "Finish and serve\n\nTop with fresh basil leaves and a drizzle of the remaining olive oil. Slice and serve immediately."
+            }
+        ],
+        "prep_time_minutes": 90,
+        "cook_time_minutes": 12,
+        "difficulty": "medium",
+        "tags": [
+            "italian",
+            "pizza",
+            "oven_baked",
+            "vegetarian",
+            "homemade",
+            "margherita"
+        ],
+        "active": true
+    },
+    {
+        "name": "Meatballs in Tomato Sauce",
+        "name_id": "meatballs_in_tomato_sauce",
+        "description": "Beef meatballs simmered in a simple tomato sauce.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "meat_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "ground_beef",
+                "quantity": 500,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "egg",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "breadcrumbs",
+                "quantity": 50,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 2,
+                "unit": "clove",
+                "preparation": "minced"
+            },
+            {
+                "product_name_id": "onion",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "half minced for meatballs, half chopped for sauce"
+            },
+            {
+                "product_name_id": "parsley",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "chopped"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "tomato_sauce",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "oregano",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "basil",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "optional"
+            },
+            {
+                "product_name_id": "parmesan_cheese",
+                "quantity": 30,
+                "unit": "g",
+                "preparation": "optional, to serve"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Form the meatballs\n\nMix beef, egg, breadcrumbs, minced onion, garlic, parsley, salt and pepper. Roll into golf-ball sized meatballs."
+            },
+            {
+                "step_number": 2,
+                "description": "Brown\n\nHeat olive oil in a wide pan and brown the meatballs on all sides. Remove to a plate."
+            },
+            {
+                "step_number": 3,
+                "description": "Make the sauce\n\nIn the same pan, soften the remaining onion, then add tomato sauce, oregano, salt and pepper. Simmer 5 minutes."
+            },
+            {
+                "step_number": 4,
+                "description": "Simmer together\n\nReturn the meatballs to the sauce. Cover and cook gently 20–25 minutes until cooked through. Finish with basil and parmesan if using."
+            }
+        ],
+        "prep_time_minutes": 20,
+        "cook_time_minutes": 35,
+        "difficulty": "easy",
+        "tags": [
+            "beef",
+            "tomato",
+            "homemade",
+            "comfort_food"
+        ],
+        "active": true
+    },
+    {
+        "name": "Pancakes",
+        "name_id": "pancakes",
+        "description": "Fluffy classic pancakes for breakfast or brunch.",
+        "servings": 4,
+        "category_name_ids": [
+            "desserts",
+            "other"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "wheat_flour_000",
+                "quantity": 200,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "milk",
+                "quantity": 250,
+                "unit": "ml",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "egg",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "sugar",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "baking_powder",
+                "quantity": 2,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "butter",
+                "quantity": 30,
+                "unit": "g",
+                "preparation": "melted, plus more for the pan"
+            },
+            {
+                "product_name_id": "vanilla_extract",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "pinch",
+                "preparation": ""
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Make the batter\n\nWhisk flour, sugar, baking powder and salt. In another bowl mix milk, eggs, melted butter and vanilla. Combine wet and dry until just mixed; small lumps are fine."
+            },
+            {
+                "step_number": 2,
+                "description": "Cook\n\nHeat a lightly buttered pan over medium heat. Pour batter by the ladle and cook until bubbles form, then flip and cook 1–2 minutes more."
+            },
+            {
+                "step_number": 3,
+                "description": "Serve\n\nStack and serve warm with honey, fruit or sugar."
+            }
+        ],
+        "prep_time_minutes": 10,
+        "cook_time_minutes": 20,
+        "difficulty": "easy",
+        "tags": [
+            "breakfast",
+            "sweet",
+            "eggs",
+            "homemade",
+            "vegetarian"
+        ],
+        "active": true
+    },
+    {
+        "name": "Pasta Alfredo",
+        "name_id": "pasta_alfredo",
+        "description": "Creamy pasta tossed with butter, cream and parmesan cheese.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "pasta"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "pasta",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": "fettuccine or similar"
+            },
+            {
+                "product_name_id": "butter",
+                "quantity": 80,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "cream",
+                "quantity": 200,
+                "unit": "ml",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "parmesan_cheese",
+                "quantity": 80,
+                "unit": "g",
+                "preparation": "freshly grated"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 1,
+                "unit": "clove",
+                "preparation": "optional, minced"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "freshly ground"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Cook the pasta\n\nBring a large pot of salted water to a boil. Cook the pasta until al dente. Reserve about 1 cup of pasta water, then drain."
+            },
+            {
+                "step_number": 2,
+                "description": "Start the sauce\n\nIn a wide pan over medium-low heat, melt the butter. Add the garlic if using and cook for 30 seconds without browning."
+            },
+            {
+                "step_number": 3,
+                "description": "Add the cream\n\nPour in the cream and simmer gently for 2–3 minutes until slightly thickened. Season with salt and black pepper."
+            },
+            {
+                "step_number": 4,
+                "description": "Melt the cheese\n\nLower the heat and stir in the grated parmesan until the sauce is smooth. Loosen with a splash of pasta water if it gets too thick."
+            },
+            {
+                "step_number": 5,
+                "description": "Toss and serve\n\nAdd the drained pasta to the pan and toss until every strand is coated. Adjust seasoning and serve immediately with extra parmesan if desired."
+            }
+        ],
+        "prep_time_minutes": 10,
+        "cook_time_minutes": 20,
+        "difficulty": "easy",
+        "tags": [
+            "italian",
+            "pasta",
+            "cream",
+            "vegetarian",
+            "weeknight",
+            "homemade"
+        ],
+        "active": true
+    },
+    {
         "name": "Pizza Muzzarella",
         "name_id": "pizza_muzzarella",
         "description": "Classic pizza with tomato sauce, mozzarella cheese, oregano and green olives.",
@@ -103,6 +1479,215 @@
             "oven_baked",
             "cheese",
             "homemade"
+        ],
+        "active": true
+    },
+    {
+        "name": "Spaghetti Bolognese",
+        "name_id": "spaghetti_bolognese",
+        "description": "Classic Italian meat sauce with spaghetti, simmered tomato, ground beef and aromatics.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "pasta",
+            "meat_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "spaghetti",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "ground_beef",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "onion",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "finely chopped"
+            },
+            {
+                "product_name_id": "carrot",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "finely chopped"
+            },
+            {
+                "product_name_id": "garlic",
+                "quantity": 2,
+                "unit": "clove",
+                "preparation": "minced"
+            },
+            {
+                "product_name_id": "tomato_sauce",
+                "quantity": 400,
+                "unit": "g",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "tomato",
+                "quantity": 2,
+                "unit": "unit",
+                "preparation": "optional, diced"
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 2,
+                "unit": "tbsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "oregano",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "basil",
+                "quantity": 1,
+                "unit": "handful",
+                "preparation": "optional, fresh"
+            },
+            {
+                "product_name_id": "parmesan_cheese",
+                "quantity": 40,
+                "unit": "g",
+                "preparation": "grated, to serve"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Prepare the soffritto\n\nHeat the olive oil in a wide pan over medium heat. Add the onion and carrot and cook for 5–7 minutes until soft. Stir in the garlic for 1 minute."
+            },
+            {
+                "step_number": 2,
+                "description": "Brown the meat\n\nAdd the ground beef, break it up with a spoon, and cook until no longer pink and lightly browned."
+            },
+            {
+                "step_number": 3,
+                "description": "Build the sauce\n\nStir in the tomato sauce and diced tomato if using. Season with salt, black pepper and oregano. Bring to a gentle simmer."
+            },
+            {
+                "step_number": 4,
+                "description": "Simmer\n\nLower the heat and cook uncovered for 25–35 minutes, stirring occasionally, until the sauce thickens and the flavors concentrate."
+            },
+            {
+                "step_number": 5,
+                "description": "Cook the spaghetti\n\nMeanwhile, boil the spaghetti in salted water according to package directions until al dente. Reserve a small cup of pasta water, then drain."
+            },
+            {
+                "step_number": 6,
+                "description": "Combine\n\nToss the spaghetti with the bolognese sauce, loosening with a splash of pasta water if needed. Tear in basil if using."
+            },
+            {
+                "step_number": 7,
+                "description": "Serve\n\nPlate and finish with grated parmesan cheese. Serve immediately."
+            }
+        ],
+        "prep_time_minutes": 20,
+        "cook_time_minutes": 40,
+        "difficulty": "easy",
+        "tags": [
+            "italian",
+            "pasta",
+            "beef",
+            "homemade",
+            "weeknight"
+        ],
+        "active": true
+    },
+    {
+        "name": "Spanish Omelette",
+        "name_id": "spanish_omelette",
+        "description": "Classic Spanish tortilla with eggs, potato and onion, cooked slowly in olive oil.",
+        "servings": 4,
+        "category_name_ids": [
+            "main_courses",
+            "side_dishes"
+        ],
+        "ingredients": [
+            {
+                "product_name_id": "egg",
+                "quantity": 6,
+                "unit": "unit",
+                "preparation": ""
+            },
+            {
+                "product_name_id": "potato",
+                "quantity": 4,
+                "unit": "unit",
+                "preparation": "peeled and thinly sliced"
+            },
+            {
+                "product_name_id": "onion",
+                "quantity": 1,
+                "unit": "unit",
+                "preparation": "thinly sliced"
+            },
+            {
+                "product_name_id": "olive_oil",
+                "quantity": 120,
+                "unit": "ml",
+                "preparation": "for frying"
+            },
+            {
+                "product_name_id": "salt",
+                "quantity": 1,
+                "unit": "tsp",
+                "preparation": "to taste"
+            },
+            {
+                "product_name_id": "black_pepper",
+                "quantity": 1,
+                "unit": "pinch",
+                "preparation": "optional"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": 1,
+                "description": "Cook the potatoes\n\nHeat the olive oil in a non-stick pan over medium heat. Add the potato and onion with a pinch of salt. Cook gently, stirring often, until the potatoes are tender but not browned, about 15–20 minutes."
+            },
+            {
+                "step_number": 2,
+                "description": "Beat the eggs\n\nIn a large bowl, beat the eggs with salt and black pepper. Drain the potatoes and onion (reserve a little oil) and fold them into the eggs. Rest 5 minutes."
+            },
+            {
+                "step_number": 3,
+                "description": "Set the omelette\n\nReturn a thin layer of oil to the pan over medium heat. Pour in the mixture and cook until the edges set, about 4–5 minutes."
+            },
+            {
+                "step_number": 4,
+                "description": "Flip and finish\n\nFlip with a plate and cook the other side 3–4 minutes until just set in the center. Rest briefly, slice and serve warm or at room temperature."
+            }
+        ],
+        "prep_time_minutes": 15,
+        "cook_time_minutes": 30,
+        "difficulty": "medium",
+        "tags": [
+            "spanish",
+            "eggs",
+            "potato",
+            "homemade",
+            "vegetarian"
         ],
         "active": true
     }

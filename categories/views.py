@@ -16,6 +16,7 @@ from core.store import (
     matches_category_search,
     matches_status,
 )
+from users.decorators import admin_required
 
 from .kinds import CATEGORY_KINDS
 
@@ -85,6 +86,7 @@ def category_list(request, kind):
     )
 
 
+@admin_required
 def category_create(request, kind):
     config = _kind_config(kind)
     errors = []
@@ -135,6 +137,7 @@ def category_create(request, kind):
     )
 
 
+@admin_required
 def category_edit(request, kind, name_id):
     config = _kind_config(kind)
     db = get_db()
@@ -192,6 +195,7 @@ def category_edit(request, kind, name_id):
     )
 
 
+@admin_required
 @require_POST
 def category_set_active(request, kind, name_id):
     _kind_config(kind)

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Users — RecipeHub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>Users</h1>
+    <a class="button" href="{% url 'user_create' %}">+ Create User</a>
+</div>
+
+{% include "includes/list_filters.html" %}
+
+{% if users %}
+    <div class="table-wrap">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr {% if not user.active %}class="is-inactive"{% endif %}>
+                        <td><strong>{{ user.username }}</strong></td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role_label }}</td>
+                        <td>
+                            {% if user.active %}
+                                <span class="badge badge-active">Active</span>
+                            {% else %}
+                                <span class="badge badge-inactive">Inactive</span>
+                            {% endif %}
+                        </td>
+                        <td class="actions">
+                            {% if user.can_view %}
+                                <a class="button button-ghost" href="{% url 'user_detail' user.username %}">View</a>
+                            {% endif %}
+                            {% if user.can_edit %}
+                                <a class="button button-ghost" href="{% url 'user_edit' user.username %}">Edit</a>
+                            {% endif %}
+                            {% if user.can_suspend %}
+                                <form method="post" action="{% url 'user_set_active' user.username %}">
+                                    {% csrf_token %}
+                                    {% include "includes/filter_hidden_fields.html" %}
+                                    {% if user.active %}
+                                        <input type="hidden" name="active" value="0">
+                                        <button type="submit" class="button button-quiet">Suspend</button>
+                                    {% else %}
+                                        <input type="hidden" name="active" value="1">
+                                        <button type="submit" class="button">Reactivate</button>
+                                    {% endif %}
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% elif filters_active %}
+    <p>No users match these filters.</p>
+{% else %}
+    <p>No users yet.</p>
+{% endif %}
+{% endblock %}

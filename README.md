@@ -72,11 +72,25 @@ Writes:
 - `data/recipe_categories.json`
 - `data/products.json`
 - `data/recipes.json`
+- `data/users.json` (password hashes only; gitignored — keep a local copy)
 
-Import JSON back into Mongo (order matters: categories → products → recipes):
+Import JSON back into Mongo (order matters: categories → products → recipes → users):
 
 ```powershell
 python manage.py import_data --clear
+```
+
+`--clear` drops catalog collections only. To also replace users:
+
+```powershell
+python manage.py import_data --clear --clear-users
+```
+
+**Users tip:** accounts live only in MongoDB. After creating users, run `export_data` so `data/users.json` can restore them if Mongo’s data directory is recreated. Or recreate with:
+
+```powershell
+python manage.py create_user FerLemos --email you@example.com --role admin
+python manage.py make_super_admin FerLemos
 ```
 
 Safe dry-run style test on a separate database without touching `recipe_hub`:
@@ -108,5 +122,6 @@ python manage.py runserver 127.0.0.1:8000
 ## Notes
 
 - Do not copy `.venv` between PCs; create a new one with `python -m venv .venv`.
-- Do not commit `.env`.
-- SQLite (`db.sqlite3`) is only Django’s default DB; kitchen data lives in MongoDB.
+- Do not commit `.env` or `data/users.json`.
+- SQLite (`db.sqlite3`) is only Django’s default DB; kitchen data **and users** live in MongoDB.
+- If Mongo starts with an empty data directory, catalog can be restored with `import_data`, but users disappear unless you imported `data/users.json` or recreate them with `create_user`.

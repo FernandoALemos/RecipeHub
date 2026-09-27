@@ -6,7 +6,9 @@
 <div class="page-head">
     <h1>{{ recipe.name }}</h1>
     <div class="actions">
-        <a class="button button-ghost" href="{% url 'recipe_edit' recipe.name_id %}">Edit</a>
+        {% if can_mutate_catalog %}
+            <a class="button button-ghost" href="{% url 'recipe_edit' recipe.name_id %}">Edit</a>
+        {% endif %}
         <a href="{% url 'recipe_list' %}">Back to list</a>
     </div>
 </div>

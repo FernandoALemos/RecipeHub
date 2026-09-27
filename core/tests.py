@@ -3,12 +3,14 @@ from pathlib import Path
 
 from bson import ObjectId
 from django.conf import settings
+from django.contrib.auth.hashers import make_password
 from django.core.management import call_command
 from django.test import Client, TestCase
 
 from config.mongo import get_db
 from core.ids import generate_name_id
 from core.store import ensure_indexes
+from users.documents import build_user_document
 
 
 class NameIdTests(TestCase):
@@ -30,6 +32,20 @@ class CatalogPersistenceTests(TestCase):
         self.db = get_db()
         ensure_indexes(self.db)
         self._cleanup_hardening()
+        self._password = "ComplexPassphrase99"
+        self.db.users.insert_one(
+            build_user_document(
+                username="zz_catalog_admin",
+                email="zz_catalog_admin@example.com",
+                password_hash=make_password(self._password),
+                role="admin",
+            )
+        )
+        login = self.client.post(
+            "/login/",
+            {"identifier": "zz_catalog_admin", "password": self._password},
+        )
+        self.assertEqual(login.status_code, 302)
 
     def tearDown(self):
         self._cleanup_hardening()
@@ -39,6 +55,14 @@ class CatalogPersistenceTests(TestCase):
         self.db.recipe_categories.delete_many({"name_id": {"$regex": r"^zz_"}})
         self.db.products.delete_many({"name_id": {"$regex": r"^zz_"}})
         self.db.recipes.delete_many({"name_id": {"$regex": r"^zz_"}})
+        self.db.users.delete_many(
+            {
+                "$or": [
+                    {"username": {"$regex": r"^zz_"}},
+                    {"email": {"$regex": r"^zz_"}},
+                ]
+            }
+        )
 
     def test_create_category_saves_name_id(self):
         response = self.client.post(
@@ -688,7 +712,11 @@ class CatalogPersistenceTests(TestCase):
         self.assertContains(response, "Suspend")
         self.assertContains(response, 'name="q"')
         self.assertContains(response, 'name="category"')
-        self.assertContains(response, 'name="ingredient"')
+        self.assertContains(response, 'name="ingredient_match"')
+        self.assertContains(response, "Contains all selected ingredients")
+        self.assertContains(response, "Contains any selected ingredient")
+        self.assertContains(response, "js-ingredient-filter-search")
+        self.assertContains(response, "ingredient-filter-options")
         self.assertContains(response, 'name="difficulty"')
         self.assertContains(response, 'name="tag"')
         self.assertContains(response, 'name="max_prep"')
@@ -768,7 +796,8 @@ class CatalogPersistenceTests(TestCase):
             {
                 "q": "pizza",
                 "category": "doughs",
-                "ingredient": oil["name_id"],
+                "ingredients": oil["name_id"],
+                "ingredient_match": "all",
                 "difficulty": "medium",
                 "tag": "oven",
                 "max_prep": "60",
@@ -787,7 +816,8 @@ class CatalogPersistenceTests(TestCase):
             {
                 "q": "pizza",
                 "category": "doughs",
-                "ingredient": oil["name_id"],
+                "ingredients": oil["name_id"],
+                "ingredient_match": "all",
                 "difficulty": "hard",
                 "tag": "oven",
                 "status": "active",
@@ -805,6 +835,52 @@ class CatalogPersistenceTests(TestCase):
             },
         )
         self.assertNotContains(too_short_prep, "ZZ Hardening Pizza")
+
+    def test_recipe_multi_ingredient_filter_all_and_any(self):
+        self.client.post("/recipes/create/", self._recipe_payload())
+        water = self.db.products.find_one({"name_id": "water"})
+        oil = self.db.products.find_one({"name_id": "olive_oil"})
+        egg = self.db.products.find_one({"name_id": "egg"})
+        self.assertIsNotNone(egg)
+
+        all_match = self.client.get(
+            "/recipes/",
+            {
+                "ingredients": [water["name_id"], oil["name_id"]],
+                "ingredient_match": "all",
+                "status": "active",
+            },
+        )
+        self.assertContains(all_match, "ZZ Hardening Pizza")
+        self.assertContains(all_match, 'value="water"')
+        self.assertContains(all_match, 'value="olive_oil"')
+
+        all_missing = self.client.get(
+            "/recipes/",
+            {
+                "ingredients": [water["name_id"], egg["name_id"]],
+                "ingredient_match": "all",
+                "status": "active",
+            },
+        )
+        self.assertNotContains(all_missing, "ZZ Hardening Pizza")
+
+        any_match = self.client.get(
+            "/recipes/",
+            {
+                "ingredients": [egg["name_id"], oil["name_id"]],
+                "ingredient_match": "any",
+                "status": "active",
+            },
+        )
+        self.assertContains(any_match, "ZZ Hardening Pizza")
+
+        # Legacy single ingredient= param still works.
+        legacy = self.client.get(
+            "/recipes/",
+            {"ingredient": oil["name_id"], "status": "active"},
+        )
+        self.assertContains(legacy, "ZZ Hardening Pizza")
 
     def test_import_data_rebuilds_relations_on_separate_database(self):
         import tempfile

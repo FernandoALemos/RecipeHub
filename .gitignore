@@ -223,3 +223,5 @@ __pycache__/
 .env
 .DS_Store
 mongod.pid
+.mongo-data/
+data/users.json

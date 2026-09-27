@@ -10,7 +10,9 @@
 
 <div class="page-head">
     <h1>{{ kind_config.title }}</h1>
-    <a class="button" href="{% url 'category_create' kind %}">+ Add Category</a>
+    {% if can_manage_categories %}
+        <a class="button" href="{% url 'category_create' kind %}">+ Add Category</a>
+    {% endif %}
 </div>
 
 {% include "includes/list_filters.html" %}
@@ -22,7 +24,9 @@
                 <tr>
                     <th>Name</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                    {% if can_manage_categories %}
+                        <th>Actions</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -41,20 +45,22 @@
                                 <span class="badge badge-inactive">Inactive</span>
                             {% endif %}
                         </td>
-                        <td class="actions">
-                            <a class="button button-ghost" href="{% url 'category_edit' kind category.name_id %}">Edit</a>
-                            <form method="post" action="{% url 'category_set_active' kind category.name_id %}">
-                                {% csrf_token %}
-                                {% include "includes/filter_hidden_fields.html" %}
-                                {% if category.active %}
-                                    <input type="hidden" name="active" value="0">
-                                    <button type="submit" class="button button-quiet">Suspend</button>
-                                {% else %}
-                                    <input type="hidden" name="active" value="1">
-                                    <button type="submit" class="button">Reactivate</button>
-                                {% endif %}
-                            </form>
-                        </td>
+                        {% if can_manage_categories %}
+                            <td class="actions">
+                                <a class="button button-ghost" href="{% url 'category_edit' kind category.name_id %}">Edit</a>
+                                <form method="post" action="{% url 'category_set_active' kind category.name_id %}">
+                                    {% csrf_token %}
+                                    {% include "includes/filter_hidden_fields.html" %}
+                                    {% if category.active %}
+                                        <input type="hidden" name="active" value="0">
+                                        <button type="submit" class="button button-quiet">Suspend</button>
+                                    {% else %}
+                                        <input type="hidden" name="active" value="1">
+                                        <button type="submit" class="button">Reactivate</button>
+                                    {% endif %}
+                                </form>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from pathlib import Path
 
 from django.conf import settings
@@ -6,6 +7,8 @@ from django.core.management.base import BaseCommand, CommandError
 
 from config.mongo import get_client
 from core.store import ensure_indexes
+from users.documents import utc_now
+from users.roles import DEFAULT_USER_ROLE, USER_ROLES
 
 
 class Command(BaseCommand):
@@ -28,7 +31,12 @@ class Command(BaseCommand):
         parser.add_argument(
             "--clear",
             action="store_true",
-            help="Drop target collections before importing.",
+            help="Drop catalog collections before importing (not users).",
+        )
+        parser.add_argument(
+            "--clear-users",
+            action="store_true",
+            help="Also drop the users collection before importing users.json.",
         )
 
     def handle(self, *args, **options):
@@ -52,6 +60,8 @@ class Command(BaseCommand):
         recipe_categories = self.read_json(files["recipe_categories"])
         products = self.read_json(files["products"])
         recipes = self.read_json(files["recipes"])
+        users_path = data_dir / "users.json"
+        users = self.read_json(users_path) if users_path.exists() else []
 
         if options["clear"]:
             for name in (
@@ -61,7 +71,10 @@ class Command(BaseCommand):
                 "product_categories",
             ):
                 db[name].drop()
-            self.stdout.write(f"Cleared collections in `{db_name}`.")
+            self.stdout.write(f"Cleared catalog collections in `{db_name}`.")
+        if options["clear_users"]:
+            db.users.drop()
+            self.stdout.write(f"Cleared users collection in `{db_name}`.")
 
         ensure_indexes(db)
 
@@ -86,12 +99,17 @@ class Command(BaseCommand):
             recipe_category_ids,
             product_ids,
         )
+        user_count = self.import_users(db.users, users) if users else 0
 
         self.stdout.write(self.style.SUCCESS(f"Data imported into `{db_name}`."))
         self.stdout.write(f"  product_categories: {len(product_category_ids)}")
         self.stdout.write(f"  recipe_categories: {len(recipe_category_ids)}")
         self.stdout.write(f"  products: {len(product_ids)}")
         self.stdout.write(f"  recipes: {recipe_count}")
+        if users_path.exists():
+            self.stdout.write(f"  users: {user_count}")
+        else:
+            self.stdout.write("  users: skipped (no data/users.json)")
 
     def read_json(self, path: Path):
         try:
@@ -218,6 +236,59 @@ class Command(BaseCommand):
             }
             existing = collection.find_one({"name_id": name_id})
             if existing:
+                collection.update_one({"_id": existing["_id"]}, {"$set": document})
+            else:
+                collection.insert_one(document)
+            count += 1
+        return count
+
+    def _parse_datetime(self, raw):
+        if not raw:
+            return utc_now()
+        if isinstance(raw, datetime):
+            return raw
+        text = str(raw).strip()
+        if text.endswith("Z"):
+            text = text[:-1] + "+00:00"
+        try:
+            return datetime.fromisoformat(text)
+        except ValueError:
+            return utc_now()
+
+    def import_users(self, collection, items):
+        count = 0
+        for item in items:
+            username = (item.get("username") or "").strip()
+            email = (item.get("email") or "").strip().lower()
+            password_hash = item.get("password_hash") or ""
+            role = item.get("role") or DEFAULT_USER_ROLE
+            if not username or not email:
+                raise CommandError("Each user needs username and email.")
+            if not password_hash:
+                raise CommandError(f"User `{username}` is missing password_hash.")
+            if role not in USER_ROLES:
+                raise CommandError(f"User `{username}` has unknown role `{role}`.")
+
+            document = {
+                "username": username,
+                "email": email,
+                "password_hash": password_hash,
+                "first_name": (item.get("first_name") or "").strip(),
+                "last_name": (item.get("last_name") or "").strip(),
+                "role": role,
+                "active": item.get("active", True),
+                "created_at": self._parse_datetime(item.get("created_at")),
+                "updated_at": self._parse_datetime(item.get("updated_at")),
+            }
+            existing = collection.find_one({"username": username})
+            if existing:
+                # Keep original created_at when updating an existing account.
+                document["created_at"] = existing.get("created_at") or document["created_at"]
+                # Never overwrite a live password with a possibly stale users.json.
+                # Full restore of hashes: use --clear-users (drop, then insert from JSON).
+                live_hash = existing.get("password_hash") or ""
+                if live_hash:
+                    document["password_hash"] = live_hash
                 collection.update_one({"_id": existing["_id"]}, {"$set": document})
             else:
                 collection.insert_one(document)

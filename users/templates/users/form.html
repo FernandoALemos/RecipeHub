@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}{{ heading }} — RecipeHub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{{ heading }}</h1>
+    <a href="{{ back_url }}">Back</a>
+</div>
+
+{% if errors %}
+    <ul class="errors">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="post" class="form auth-form">
+    {% csrf_token %}
+    <label>
+        Username
+        <input type="text" name="username" value="{{ form.username }}" autocomplete="username" required>
+    </label>
+    <label>
+        Email
+        <input type="email" name="email" value="{{ form.email }}" autocomplete="email" required>
+    </label>
+    <label>
+        First name
+        <input type="text" name="first_name" value="{{ form.first_name }}" autocomplete="given-name">
+    </label>
+    <label>
+        Last name
+        <input type="text" name="last_name" value="{{ form.last_name }}" autocomplete="family-name">
+    </label>
+    <label>
+        Password{% if not password_required %} <span class="hint">(leave blank to keep)</span>{% endif %}
+        <input type="password" name="password" autocomplete="{% if is_edit %}new-password{% else %}new-password{% endif %}" {% if password_required %}required{% endif %}>
+    </label>
+    <label>
+        Confirm password
+        <input type="password" name="confirm_password" autocomplete="new-password" {% if password_required %}required{% endif %}>
+    </label>
+
+    {% if role_choices %}
+        <label>
+            Role
+            <select name="role">
+                {% for code, label in role_choices %}
+                    <option value="{{ code }}" {% if form.role == code %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    {% elif role_fixed %}
+        <p class="hint">Role: <strong>{{ fixed_role_label }}</strong></p>
+        <input type="hidden" name="role" value="{{ form.role }}">
+    {% endif %}
+
+    <button type="submit">{{ submit_label }}</button>
+</form>
+{% endblock %}

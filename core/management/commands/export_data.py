@@ -88,6 +88,29 @@ def serialize_recipe(recipe, products, categories):
     }
 
 
+def _iso(value):
+    if value is None:
+        return None
+    if hasattr(value, "isoformat"):
+        return value.isoformat()
+    return str(value)
+
+
+def serialize_user(user):
+    """Export user with password_hash (never plaintext password)."""
+    return {
+        "username": user["username"],
+        "email": user.get("email", ""),
+        "password_hash": user.get("password_hash", ""),
+        "first_name": user.get("first_name", ""),
+        "last_name": user.get("last_name", ""),
+        "role": user.get("role", "user"),
+        "active": user.get("active", True),
+        "created_at": _iso(user.get("created_at")),
+        "updated_at": _iso(user.get("updated_at")),
+    }
+
+
 class Command(BaseCommand):
     help = "Export RecipeHub collections to JSON"
 
@@ -146,6 +169,8 @@ class Command(BaseCommand):
             serialize_recipe(recipe, product_map, recipe_category_map)
             for recipe in recipes
         ]
+        users = list(db["users"].find().sort("username", 1))
+        users_data = [serialize_user(user) for user in users]
 
         self.write_json(
             data_dir / "product_categories.json",
@@ -163,6 +188,10 @@ class Command(BaseCommand):
             data_dir / "recipes.json",
             recipes_data,
         )
+        self.write_json(
+            data_dir / "users.json",
+            users_data,
+        )
 
         self.stdout.write(
             self.style.SUCCESS(
@@ -173,6 +202,7 @@ class Command(BaseCommand):
         self.stdout.write(f"  recipe_categories: {len(recipe_categories_data)}")
         self.stdout.write(f"  products: {len(products_data)}")
         self.stdout.write(f"  recipes: {len(recipes_data)}")
+        self.stdout.write(f"  users: {len(users_data)}")
 
     def write_json(self, path, data):
         with path.open(

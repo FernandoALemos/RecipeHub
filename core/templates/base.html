@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}RecipeHub{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'core/styles.css' %}?v=17">
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}?v=21">
 </head>
 <body>
     <header class="site-header">
@@ -17,6 +17,24 @@
             <a href="{% url 'recipe_list' %}" class="{% if '/recipes/' in request.path %}active{% endif %}">Recipes</a>
             <span class="soon">Meal Plans</span>
             <span class="soon">Shopping Lists</span>
+            {% if current_user %}
+                <details class="account-menu">
+                    <summary>{{ current_user.username }}</summary>
+                    <div class="account-menu-panel">
+                        <a href="{% url 'profile' %}">Profile</a>
+                        {% if can_manage_users %}
+                            <a href="{% url 'user_list' %}">Users</a>
+                        {% endif %}
+                        <form method="post" action="{% url 'logout' %}" class="account-menu-logout">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </div>
+                </details>
+            {% else %}
+                <a href="{% url 'login' %}" class="{% if request.path == '/login/' %}active{% endif %}">Login</a>
+                <a href="{% url 'register' %}" class="{% if request.path == '/register/' %}active{% endif %}">Register</a>
+            {% endif %}
         </nav>
     </header>
     {% if messages %}

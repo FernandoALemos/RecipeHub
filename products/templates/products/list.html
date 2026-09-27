@@ -5,7 +5,9 @@
 {% block content %}
 <div class="page-head">
     <h1>Products</h1>
-    <a class="button" href="{% url 'product_create' %}">+ Add Product</a>
+    {% if can_mutate_catalog %}
+        <a class="button" href="{% url 'product_create' %}">+ Add Product</a>
+    {% endif %}
 </div>
 
 {% include "includes/list_filters.html" %}
@@ -19,7 +21,9 @@
                     <th>Category</th>
                     <th>Default unit</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                    {% if can_mutate_catalog or can_manage_active %}
+                        <th>Actions</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -35,20 +39,26 @@
                                 <span class="badge badge-inactive">Inactive</span>
                             {% endif %}
                         </td>
-                        <td class="actions">
-                            <a class="button button-ghost" href="{% url 'product_edit' product.name_id %}">Edit</a>
-                            <form method="post" action="{% url 'product_set_active' product.name_id %}">
-                                {% csrf_token %}
-                                {% include "includes/filter_hidden_fields.html" %}
-                                {% if product.active %}
-                                    <input type="hidden" name="active" value="0">
-                                    <button type="submit" class="button button-quiet">Suspend</button>
-                                {% else %}
-                                    <input type="hidden" name="active" value="1">
-                                    <button type="submit" class="button">Reactivate</button>
+                        {% if can_mutate_catalog or can_manage_active %}
+                            <td class="actions">
+                                {% if can_mutate_catalog %}
+                                    <a class="button button-ghost" href="{% url 'product_edit' product.name_id %}">Edit</a>
                                 {% endif %}
-                            </form>
-                        </td>
+                                {% if can_manage_active %}
+                                    <form method="post" action="{% url 'product_set_active' product.name_id %}">
+                                        {% csrf_token %}
+                                        {% include "includes/filter_hidden_fields.html" %}
+                                        {% if product.active %}
+                                            <input type="hidden" name="active" value="0">
+                                            <button type="submit" class="button button-quiet">Suspend</button>
+                                        {% else %}
+                                            <input type="hidden" name="active" value="1">
+                                            <button type="submit" class="button">Reactivate</button>
+                                        {% endif %}
+                                    </form>
+                                {% endif %}
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

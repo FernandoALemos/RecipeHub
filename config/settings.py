@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'categories',
     'products',
     'recipes',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'users.context_processors.recipehub_user',
             ],
         },
     },

@@ -80,10 +80,21 @@
     </label>
 
     {% if is_edit %}
-        <label class="check">
-            <input type="checkbox" name="active" {% if form.active %}checked{% endif %}>
-            <span>Active</span>
-        </label>
+        {% if can_manage_active %}
+            <label class="check">
+                <input type="checkbox" name="active" {% if form.active %}checked{% endif %}>
+                <span>Active</span>
+            </label>
+        {% else %}
+            <p class="hint">
+                Status:
+                {% if form.active %}
+                    <span class="badge badge-active">Active</span>
+                {% else %}
+                    <span class="badge badge-inactive">Inactive</span>
+                {% endif %}
+            </p>
+        {% endif %}
     {% endif %}
 
     <button type="submit">{{ submit_label }}</button>

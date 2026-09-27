@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ heading }} — RecipeHub{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{{ heading }}</h1>
+    <a class="button button-ghost" href="{% url 'user_edit' profile_user.username %}">Edit</a>
+</div>
+
+<dl class="profile-fields">
+    <div>
+        <dt>Username</dt>
+        <dd>{{ profile_user.username }}</dd>
+    </div>
+    <div>
+        <dt>Email</dt>
+        <dd>{{ profile_user.email }}</dd>
+    </div>
+    <div>
+        <dt>First name</dt>
+        <dd>{{ profile_user.first_name|default:"—" }}</dd>
+    </div>
+    <div>
+        <dt>Last name</dt>
+        <dd>{{ profile_user.last_name|default:"—" }}</dd>
+    </div>
+    <div>
+        <dt>Role</dt>
+        <dd>{{ profile_user.role_label }}</dd>
+    </div>
+    <div>
+        <dt>Status</dt>
+        <dd>
+            {% if profile_user.active %}
+                <span class="badge badge-active">Active</span>
+            {% else %}
+                <span class="badge badge-inactive">Inactive</span>
+            {% endif %}
+        </dd>
+    </div>
+</dl>
+{% endblock %}

@@ -38,6 +38,161 @@
         "active": true
     },
     {
+        "name": "Avocado",
+        "name_id": "avocado",
+        "description": "Fresh avocado",
+        "aliases": [],
+        "category_name_id": "fruits",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Bacon",
+        "name_id": "bacon",
+        "description": "Cured pork bacon",
+        "aliases": [],
+        "category_name_id": "meat",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Baking Powder",
+        "name_id": "baking_powder",
+        "description": "Chemical leavening baking powder",
+        "aliases": [],
+        "category_name_id": "other",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp"
+        ],
+        "default_unit": "tsp",
+        "active": true
+    },
+    {
+        "name": "Banana",
+        "name_id": "banana",
+        "description": "Fresh banana",
+        "aliases": [],
+        "category_name_id": "fruits",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Basil",
+        "name_id": "basil",
+        "description": "Fresh or dried basil",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste",
+            "handful"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Beef Steak",
+        "name_id": "beef_steak",
+        "description": "Beef steak cut",
+        "aliases": [
+            "steak"
+        ],
+        "category_name_id": "meat",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Bell Pepper",
+        "name_id": "bell_pepper",
+        "description": "Sweet bell pepper",
+        "aliases": [
+            "pepper",
+            "capsicum"
+        ],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Black Beans",
+        "name_id": "black_beans",
+        "description": "Black beans",
+        "aliases": [],
+        "category_name_id": "legumes",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
         "name": "Black Pepper",
         "name_id": "black_pepper",
         "description": "Ground or whole black pepper",
@@ -56,6 +211,63 @@
             "tbsp",
             "pinch",
             "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Bread",
+        "name_id": "bread",
+        "description": "Sliced sandwich or loaf bread",
+        "aliases": [
+            "sliced bread"
+        ],
+        "category_name_id": "grains_cereals",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "g"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Breadcrumbs",
+        "name_id": "breadcrumbs",
+        "description": "Dry breadcrumbs",
+        "aliases": [
+            "bread crumbs"
+        ],
+        "category_name_id": "grains_cereals",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Broccoli",
+        "name_id": "broccoli",
+        "description": "Fresh broccoli",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
         ],
         "default_unit": "g",
         "active": true
@@ -98,6 +310,122 @@
         "active": true
     },
     {
+        "name": "Cheddar Cheese",
+        "name_id": "cheddar_cheese",
+        "description": "Cheddar cheese",
+        "aliases": [
+            "cheddar"
+        ],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Chicken Breast",
+        "name_id": "chicken_breast",
+        "description": "Boneless chicken breast",
+        "aliases": [],
+        "category_name_id": "poultry",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Chicken Thigh",
+        "name_id": "chicken_thigh",
+        "description": "Chicken thigh",
+        "aliases": [],
+        "category_name_id": "poultry",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Chickpeas",
+        "name_id": "chickpeas",
+        "description": "Chickpeas / garbanzo beans",
+        "aliases": [
+            "garbanzo beans"
+        ],
+        "category_name_id": "legumes",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Cilantro",
+        "name_id": "cilantro",
+        "description": "Fresh cilantro / coriander leaves",
+        "aliases": [
+            "coriander",
+            "fresh coriander"
+        ],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "handful",
+            "tbsp",
+            "to_taste"
+        ],
+        "default_unit": "handful",
+        "active": true
+    },
+    {
+        "name": "Coconut Milk",
+        "name_id": "coconut_milk",
+        "description": "Canned coconut milk",
+        "aliases": [],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "l",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
         "name": "Cornstarch",
         "name_id": "cornstarch",
         "description": "Corn starch",
@@ -116,6 +444,90 @@
             "tbsp"
         ],
         "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Cream",
+        "name_id": "cream",
+        "description": "Heavy or cooking cream",
+        "aliases": [
+            "heavy cream",
+            "cooking cream"
+        ],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass",
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "ml",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Cream Cheese",
+        "name_id": "cream_cheese",
+        "description": "Soft cream cheese",
+        "aliases": [],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Cumin",
+        "name_id": "cumin",
+        "description": "Ground cumin",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "tsp",
+        "active": true
+    },
+    {
+        "name": "Curry Powder",
+        "name_id": "curry_powder",
+        "description": "Mild or medium curry powder blend",
+        "aliases": [
+            "curry"
+        ],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "tsp",
         "active": true
     },
     {
@@ -190,6 +602,28 @@
         "active": true
     },
     {
+        "name": "Ginger",
+        "name_id": "ginger",
+        "description": "Fresh ginger root",
+        "aliases": [
+            "fresh ginger"
+        ],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "unit"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
         "name": "Greek Yogurt",
         "name_id": "greek_yogurt",
         "description": "Thick Greek-style yogurt",
@@ -206,6 +640,25 @@
             "kg",
             "cup",
             "tbsp"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Ground Beef",
+        "name_id": "ground_beef",
+        "description": "Ground beef / minced beef",
+        "aliases": [
+            "minced beef",
+            "beef mince"
+        ],
+        "category_name_id": "meat",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg"
         ],
         "default_unit": "g",
         "active": true
@@ -265,6 +718,107 @@
             "cup"
         ],
         "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Lettuce",
+        "name_id": "lettuce",
+        "description": "Fresh lettuce",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "g",
+            "kg",
+            "handful"
+        ],
+        "default_unit": "unit",
+        "active": true
+    },
+    {
+        "name": "Mayonnaise",
+        "name_id": "mayonnaise",
+        "description": "Mayonnaise",
+        "aliases": [
+            "mayo"
+        ],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "mass",
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "ml",
+            "tbsp",
+            "tsp"
+        ],
+        "default_unit": "tbsp",
+        "active": true
+    },
+    {
+        "name": "Milk",
+        "name_id": "milk",
+        "description": "Cow milk",
+        "aliases": [],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "l",
+            "cup",
+            "tbsp"
+        ],
+        "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Mushroom",
+        "name_id": "mushroom",
+        "description": "Fresh mushrooms",
+        "aliases": [
+            "mushrooms"
+        ],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit",
+            "handful"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Mustard",
+        "name_id": "mustard",
+        "description": "Prepared mustard",
+        "aliases": [],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "mass",
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "ml",
+            "tsp",
+            "tbsp"
+        ],
+        "default_unit": "tsp",
         "active": true
     },
     {
@@ -419,6 +973,46 @@
         "active": true
     },
     {
+        "name": "Paprika",
+        "name_id": "paprika",
+        "description": "Ground paprika",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "tsp",
+        "active": true
+    },
+    {
+        "name": "Parmesan Cheese",
+        "name_id": "parmesan_cheese",
+        "description": "Hard grated or block parmesan",
+        "aliases": [
+            "parmesan",
+            "parmigiano"
+        ],
+        "category_name_id": "dairy",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
         "name": "Parsley",
         "name_id": "parsley",
         "description": "Fresh parsley",
@@ -433,6 +1027,22 @@
             "handful",
             "tbsp",
             "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Pasta",
+        "name_id": "pasta",
+        "description": "Dry pasta (generic)",
+        "aliases": [],
+        "category_name_id": "grains_cereals",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg"
         ],
         "default_unit": "g",
         "active": true
@@ -495,6 +1105,45 @@
         "active": true
     },
     {
+        "name": "Rosemary",
+        "name_id": "rosemary",
+        "description": "Fresh or dried rosemary",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Salmon",
+        "name_id": "salmon",
+        "description": "Salmon fillet or steak",
+        "aliases": [],
+        "category_name_id": "fish_seafood",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
         "name": "Salt",
         "name_id": "salt",
         "description": "Cooking salt",
@@ -512,6 +1161,103 @@
             "tbsp",
             "pinch",
             "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Shrimp",
+        "name_id": "shrimp",
+        "description": "Shrimp / prawns",
+        "aliases": [
+            "prawns"
+        ],
+        "category_name_id": "fish_seafood",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Soy Sauce",
+        "name_id": "soy_sauce",
+        "description": "Soy sauce",
+        "aliases": [
+            "soya sauce"
+        ],
+        "category_name_id": "condiments_sauces",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "tsp",
+            "tbsp",
+            "cup"
+        ],
+        "default_unit": "tbsp",
+        "active": true
+    },
+    {
+        "name": "Spaghetti",
+        "name_id": "spaghetti",
+        "description": "Dry spaghetti",
+        "aliases": [],
+        "category_name_id": "grains_cereals",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Spinach",
+        "name_id": "spinach",
+        "description": "Fresh spinach leaves",
+        "aliases": [],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "mass",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "cup",
+            "handful"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Strawberry",
+        "name_id": "strawberry",
+        "description": "Fresh strawberries",
+        "aliases": [
+            "strawberries"
+        ],
+        "category_name_id": "fruits",
+        "measurement_types": [
+            "mass",
+            "count"
+        ],
+        "allowed_units": [
+            "g",
+            "kg",
+            "unit",
+            "cup"
         ],
         "default_unit": "g",
         "active": true
@@ -557,6 +1303,27 @@
         "active": true
     },
     {
+        "name": "Thyme",
+        "name_id": "thyme",
+        "description": "Fresh or dried thyme",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
         "name": "Tomato",
         "name_id": "tomato",
         "description": "Fresh tomato",
@@ -591,6 +1358,63 @@
             "l"
         ],
         "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Tuna",
+        "name_id": "tuna",
+        "description": "Tuna (fresh or canned)",
+        "aliases": [],
+        "category_name_id": "fish_seafood",
+        "measurement_types": [
+            "mass"
+        ],
+        "allowed_units": [
+            "g",
+            "kg"
+        ],
+        "default_unit": "g",
+        "active": true
+    },
+    {
+        "name": "Turmeric",
+        "name_id": "turmeric",
+        "description": "Ground turmeric",
+        "aliases": [],
+        "category_name_id": "herbs_spices",
+        "measurement_types": [
+            "mass",
+            "culinary_volume",
+            "informal"
+        ],
+        "allowed_units": [
+            "g",
+            "tsp",
+            "tbsp",
+            "pinch",
+            "to_taste"
+        ],
+        "default_unit": "tsp",
+        "active": true
+    },
+    {
+        "name": "Vanilla Extract",
+        "name_id": "vanilla_extract",
+        "description": "Vanilla extract",
+        "aliases": [
+            "vanilla"
+        ],
+        "category_name_id": "other",
+        "measurement_types": [
+            "volume",
+            "culinary_volume"
+        ],
+        "allowed_units": [
+            "ml",
+            "tsp",
+            "tbsp"
+        ],
+        "default_unit": "tsp",
         "active": true
     },
     {
@@ -693,6 +1517,27 @@
             "cup"
         ],
         "default_unit": "ml",
+        "active": true
+    },
+    {
+        "name": "Zucchini",
+        "name_id": "zucchini",
+        "description": "Fresh zucchini / courgette",
+        "aliases": [
+            "courgette"
+        ],
+        "category_name_id": "vegetables",
+        "measurement_types": [
+            "count",
+            "mass"
+        ],
+        "allowed_units": [
+            "unit",
+            "half_unit",
+            "g",
+            "kg"
+        ],
+        "default_unit": "unit",
         "active": true
     }
 ]

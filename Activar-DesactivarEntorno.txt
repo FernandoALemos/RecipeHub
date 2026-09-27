@@ -40,7 +40,10 @@ deactivate
 
 
 para actualizar los backup de data, realizar el comando:
+Exportar
 "python manage.py export_data"
+Importar
+"python manage.py import_data"
 
 para ver los paquetes y dependencias requeridas e instaladas 
 pip freeze

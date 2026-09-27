@@ -21,6 +21,9 @@ from core.store import (
     matches_product_search,
     matches_status,
 )
+from users.decorators import admin_required, login_required
+from users.permissions import resolve_active_on_create, resolve_active_on_edit
+from users.session import get_current_user
 
 
 def _parse_aliases(raw: str) -> list[str]:
@@ -184,6 +187,7 @@ def product_list(request):
         },
     )
 
+@login_required
 def product_create(request):
     db = get_db()
     ensure_indexes(db)
@@ -193,7 +197,7 @@ def product_create(request):
 
     if request.method == "POST":
         form = _form_from_post(request.POST)
-        form["active"] = True
+        form["active"] = resolve_active_on_create()
         errors, name_id, category, name_taken = _validate_product_form(form, db)
         if name_taken:
             already_exists(request, "product")
@@ -210,7 +214,7 @@ def product_create(request):
                         "measurement_types": form["measurement_types"],
                         "allowed_units": form["allowed_units"],
                         "default_unit": form["default_unit"],
-                        "active": True,
+                        "active": resolve_active_on_create(),
                     }
                 )
             except DuplicateKeyError:
@@ -232,6 +236,7 @@ def product_create(request):
     )
 
 
+@login_required
 def product_edit(request, name_id):
     db = get_db()
     ensure_indexes(db)
@@ -239,9 +244,15 @@ def product_edit(request, name_id):
     categories = _category_options(db, include_id=product.get("category_id"))
     errors = []
     form = _form_from_product(product)
+    current_user = get_current_user(request)
 
     if request.method == "POST":
         form = _form_from_post(request.POST)
+        form["active"] = resolve_active_on_edit(
+            current_user,
+            form["active"],
+            product.get("active", True),
+        )
         errors, next_name_id, category, name_taken = _validate_product_form(
             form,
             db,
@@ -289,6 +300,7 @@ def product_edit(request, name_id):
     )
 
 
+@admin_required
 @require_POST
 def product_set_active(request, name_id):
     db = get_db()

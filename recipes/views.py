@@ -14,14 +14,20 @@ from core.store import (
     ensure_indexes,
     filters_are_active,
     find_by_name_id,
+    ingredient_match_filter,
     list_filter_values,
     list_url_with_filters,
+    matches_ingredients_filter,
     matches_max_minutes,
     matches_name_search,
     matches_status,
     matches_tag_filter,
     parse_max_minutes,
+    request_param,
+    request_param_list,
 )
+from users.decorators import admin_required, login_required
+from users.permissions import resolve_active_on_create
 
 DIFFICULTIES = [
     ("easy", "Easy"),
@@ -403,31 +409,38 @@ def _decorate_recipe(recipe, db):
 
 
 def _list_redirect(request):
+    filters = _recipe_list_filters(request)
+    return redirect(list_url_with_filters(reverse("recipe_list"), filters))
+
+
+def _recipe_list_filters(request):
     filters = list_filter_values(
         request,
         "category",
-        "ingredient",
         "difficulty",
         "tag",
         "max_prep",
         "max_cook",
     )
-    return redirect(list_url_with_filters(reverse("recipe_list"), filters))
+    ingredients = request_param_list(request, "ingredients")
+    legacy = request_param(request, "ingredient")
+    if legacy and legacy not in ingredients:
+        ingredients.append(legacy)
+    filters["ingredients"] = ingredients
+    filters["ingredient_match"] = ingredient_match_filter(request)
+    return filters
 
 
 def recipe_list(request):
     db = get_db()
-    filters = list_filter_values(
-        request,
-        "category",
-        "ingredient",
-        "difficulty",
-        "tag",
-        "max_prep",
-        "max_cook",
-    )
+    filters = _recipe_list_filters(request)
     categories = {item["_id"]: item for item in db.recipe_categories.find()}
     products = {item["_id"]: item for item in db.products.find()}
+    products_by_name_id = {
+        item["name_id"]: item
+        for item in db.products.find()
+        if item.get("name_id")
+    }
     category_options = [
         {"id": item["name_id"], "name": item["name"]}
         for item in db.recipe_categories.find().sort("name", 1)
@@ -436,6 +449,23 @@ def recipe_list(request):
         {"id": item["name_id"], "name": item["name"]}
         for item in db.products.find().sort("name", 1)
         if item.get("active", True)
+    ]
+    known_ingredient_ids = {item["id"] for item in ingredient_options}
+    # Keep suspended products that are already selected so chips stay visible.
+    for name_id in filters["ingredients"]:
+        if name_id in known_ingredient_ids:
+            continue
+        product = products_by_name_id.get(name_id)
+        if product:
+            ingredient_options.append(
+                {"id": product["name_id"], "name": f"{product['name']} (suspended)"}
+            )
+            known_ingredient_ids.add(name_id)
+    filters["ingredients"] = [
+        name_id for name_id in filters["ingredients"] if name_id in known_ingredient_ids
+    ]
+    selected_ingredient_options = [
+        item for item in ingredient_options if item["id"] in set(filters["ingredients"])
     ]
     tag_ids = sorted(
         {
@@ -482,15 +512,17 @@ def recipe_list(request):
             if not any(item.get("name_id") == filters["category"] for item in recipe_categories):
                 continue
 
-        if filters["ingredient"]:
-            has_ingredient = False
-            for item in recipe.get("ingredients", []):
-                product = products.get(item.get("product_id"))
-                if product and product.get("name_id") == filters["ingredient"]:
-                    has_ingredient = True
-                    break
-            if not has_ingredient:
-                continue
+        recipe_ingredient_ids = set()
+        for item in recipe.get("ingredients", []):
+            product = products.get(item.get("product_id"))
+            if product and product.get("name_id"):
+                recipe_ingredient_ids.add(product["name_id"])
+        if not matches_ingredients_filter(
+            recipe_ingredient_ids,
+            filters["ingredients"],
+            filters["ingredient_match"],
+        ):
+            continue
 
         names = [item["name"] for item in recipe_categories]
         items.append(
@@ -510,7 +542,9 @@ def recipe_list(request):
             "clear_url": reverse("recipe_list"),
             "search_placeholder": "Search by name",
             "category_options": category_options,
-            "ingredient_options": ingredient_options,
+            "enable_ingredient_multi_filter": True,
+            "ingredient_filter_options": ingredient_options,
+            "selected_ingredient_options": selected_ingredient_options,
             "difficulty_options": DIFFICULTIES,
             "tag_options": tag_options,
             "time_options": TIME_FILTER_OPTIONS,
@@ -523,6 +557,7 @@ def recipe_detail(request, name_id):
     return render(request, "recipes/detail.html", {"recipe": recipe})
 
 
+@login_required
 def recipe_create(request):
     db = get_db()
     ensure_indexes(db)
@@ -537,7 +572,7 @@ def recipe_create(request):
             already_exists(request, "recipe")
         if document is not None:
             try:
-                db.recipes.insert_one({**document, "active": True})
+                db.recipes.insert_one({**document, "active": resolve_active_on_create()})
             except DuplicateKeyError:
                 already_exists(request, "recipe")
             else:
@@ -560,6 +595,7 @@ def recipe_create(request):
     )
 
 
+@login_required
 def recipe_edit(request, name_id):
     db = get_db()
     ensure_indexes(db)
@@ -584,6 +620,7 @@ def recipe_edit(request, name_id):
             already_exists(request, "recipe")
         if document is not None:
             try:
+                # Active is never edited here; only admin set_active may change it.
                 db.recipes.update_one(
                     {"_id": recipe["_id"]},
                     {"$set": {**document, "active": recipe.get("active", True)}},
@@ -613,6 +650,7 @@ def recipe_edit(request, name_id):
     )
 
 
+@admin_required
 @require_POST
 def recipe_set_active(request, name_id):
     db = get_db()
